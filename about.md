@@ -4,35 +4,6 @@ title: About Me
 permalink: /about/
 ---
 
-I'm currently in the first semester of a masters degree in computer science
-at [KAUST](http://www.kaust.edu.sa). I am fully funded and supported by the 
-KAUST Fellowship.
-
-My research this semester has primarily been on machine learning with undirected
-graphical models.
-
-I'm also working on a couple of interesting course projects:
-
-   1. *Computing Systems:* I've implemented the following in the
-      [xv6](http://pdos.csail.mit.edu/6.828/2012/xv6.html) kernel:
-      * A system call that counts the number of free pages at any time.
-      * A bitmap memory allocator to replace the current linked list one.
-
-      I'm currently implementing a shared memory abstraction for user programs.
-      The code is currently in a private Github repository, since we were requested
-      not to host it publicly yet.
- 
-   2. *Algorithms:* For our group project, we're doing a comparative study
-      of two cardinality estimation algorithms for big streaming data.
-      * [Adaptive Sampling](http://hal.archives-ouvertes.fr/docs/00/07/55/33/PDF/RR-1025.pdf)
-      * [HyperLogLog](http://algo.inria.fr/flajolet/Publications/FlFuGaMe07.pdf)
-
-      Our [project proposal](https://www.dropbox.com/s/cm5zrpgx3jquia3/CS260-Proposal.pdf)
-      has short descriptions of these algorithms.
-
-## Past
-{:.no_toc}
-
 Below is a detailed account of the stuff I've worked on in the past.
 This is going to be considerably more verbose than my resume. I plan to
 eventually provide a way to group this list by work domain, programing language,
@@ -40,6 +11,25 @@ etc., but for now there's just this table of contents.
 
 * TOC
 {:toc}
+
+### KAUST Course Projects
+
+   1. *Computing Systems:* I've implemented the following in the
+      [xv6](http://pdos.csail.mit.edu/6.828/2012/xv6.html) kernel:
+      * A system call that counts the number of free pages at any time.
+      * A bitmap memory allocator to replace the current linked list one.
+      * A shared memory abstraction for user-mode programs.
+
+      See the [code](https://github.com/emaadmanzoor/xv6/branches).
+ 
+   2. *Algorithms:* For our group project, we did a comparative study
+      of two cardinality estimation algorithms for big streaming data.
+      * [Adaptive Sampling](http://hal.archives-ouvertes.fr/docs/00/07/55/33/PDF/RR-1025.pdf)
+      * [HyperLogLog](http://algo.inria.fr/flajolet/Publications/FlFuGaMe07.pdf)
+
+      Our [project report](https://www.dropbox.com/s/xa8hir3x2zlwv31/CS260_Final_Report.pdf)
+      has the empirical results. [Code](https://github.com/emaadmanzoor/streaming-unique-counting)
+      is available too.
 
 ### Yahoo!
 {: style="float:left; margin-bottom:0;"}

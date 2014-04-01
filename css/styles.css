@@ -9,6 +9,7 @@ body {
 h1, h2, h3, h4 {
     font-family: Arial, Verdana, sans-serif;
     line-height: 1em;
+    color: #000;
 }
 
 i {
