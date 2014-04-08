@@ -11,7 +11,7 @@ permalink: /
 ### [InfoCloud][1] research group, [KAUST][2].
 
 {: style="font-weight: normal; margin-top:0.5em; margin-bottom: 0;"}
-#### [emaadahmed.manzoor@kaust.edu.sa](mailto:emaadahmed.manzoor@kaust.edu.sa)
+#### emaadahmed.manzoor@kaust.edu.sa
 
 I was a software engineer at [Yahoo](http://www.yahoo.com/)! till 2013.
 Prior to that, I was a computer science undergraduate at [BITS - Pilani Goa Campus][4] from 2008 to 2012.
