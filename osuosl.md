@@ -8,7 +8,7 @@ The following page serves as a wiki for my GSoC '14 project with the OSU OSL.
 
 ### Some useful links
 
-   * Code and version history for this page can be found [here](https://github.com/emaadmanzoor/blog/osuosl.md).
+   * Code and version history for this page can be found [here](https://github.com/emaadmanzoor/blog/blob/gh-pages/osuosl.md).
    * You can find my proposal [here](http://www.google-melange.com/gsoc/proposal/review/student/google/gsoc2014/emaadmanzoor/5724160613416960).
    * Repository for the code under the OSU OSL [Github organization](https://github.com/osuosl). `TODO`
    * OSL IPMI test machine. `TODO`
