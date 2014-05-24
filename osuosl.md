@@ -11,13 +11,19 @@ The following page serves as a wiki for my GSoC '14 project with the OSU OSL.
    * Code and version history for this page can be found [here](https://github.com/emaadmanzoor/blog/blob/gh-pages/osuosl.md).
    * You can find my proposal [here](http://www.google-melange.com/gsoc/proposal/review/student/google/gsoc2014/emaadmanzoor/5724160613416960).
    * Repository for the code under the OSU OSL [Github organization](https://github.com/osuosl). `TODO`
+      * Until we move them under the OSUOSL organization, the repositories will be here: [igor-rest-api](https://github.com/emaadmanzoor/igor-rest-api), [igor-cli](https://github.com/emaadmanzoor/igor-cli)
    * OSL IPMI test machine. `TODO`
 
 ### Current Tasks
 
    * Get access to an IPMI-enabled machine `TODO`
+      * *Hypervisors supporting IPMI?* Until I get access to a physical machine,
+        I supposed having a VM on a hypervisor that implements
+        a virtual IPMI interface would be useful, but neither KVM/QEMU or Virtualbox support this.
    * Discuss initial REST API and CLI design, REST service hosting `TODO`
+      * An initial implementation will be available soon [here](https://github.com/emaadmanzoor/igor-rest-api).
    * Implement the `login` and `power` REST endpoints and CLI commands `TODO`
+      * An implementation will be available soon [here](https://github.com/emaadmanzoor/igor-rest-cli).
 
 ## Design
 
