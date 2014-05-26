@@ -16,12 +16,12 @@ The following page serves as a wiki for my GSoC '14 project with the OSU OSL.
 
 ### Current Tasks
 
-   * Get access to an IPMI-enabled machine `TODO`
+   * `TODO` Get access to an IPMI-enabled machine
       * *Hypervisors supporting IPMI?* Until I get access to a physical machine,
         I supposed having a VM on a hypervisor that implements
         a virtual IPMI interface would be useful, but neither KVM/QEMU or Virtualbox support this.
-   * Discuss initial REST API and CLI design, REST service hosting `TODO`
-      * An initial implementation will be available soon [here](https://github.com/emaadmanzoor/igor-rest-api).
+   * Discuss initial REST API and CLI design, REST service hosting
+      * An initial implementation is available [here](https://github.com/emaadmanzoor/igor-rest-api).
    * Implement the `login` and `power` REST endpoints and CLI commands `TODO`
       * An implementation will be available soon [here](https://github.com/emaadmanzoor/igor-rest-cli).
 
@@ -31,7 +31,11 @@ The standard CLI for IPMI-enabled machines is [ipmitool](http://sourceforge.net/
 expect access from devices that may not have `ipmitool` available (eg. mobile phones), it makes sense to provide
 a universal REST API that is served from an OSL machine.
 
-### REST API Endpoints
+### REST API
+
+In the REST paradigm, interactions are with *resources* via HTTP *verbs*. In our case, resources could be
+machines, machine devices/logs exposed by IPMI and users. The verbs are HTTP *GET*, *PUT*, *POST* etc.
+that define different interactions with these resources.
 
    * `/login/`: Accepts a username/password combination, issues an auth token on success. All future
      IPMI requests reuse this auth token.
