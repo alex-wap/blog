@@ -7,7 +7,7 @@ tags: behavioral-economics
 The first chapter of [Micromotives and Macrobehavior][6] introduces the phenomenon
 of people behaving in a self-serving way that results in some regular and predictable
 pattern of the group's behavior as a whole.
-
+ 
 An interesting question posed is, is there a relation between the
 behavior characteristics of individuals and the characteristics of the aggregate?
 
@@ -73,17 +73,17 @@ that's also mentioned explicitly in the [Small-World Phenomenon][9] chapter in
 If you find this kind of stuff interesting, a very good introduction is
 the [Networks, Crowds and Markets][3] course by [Jon Kleinberg][2].
 
-I'm excited about a new dimension to these questions that I came across
-recently: neuroeconomics. Neuroeconomics too tries to understand human decision
+A new dimension to these questions that I came across
+recently is neuroeconomics. Neuroeconomics too tries to understand human decision
 making, but it pulls in perspectives from neuroscience. Concretely, it asks:
 
    * How can economic behavior shape our understanding of the human brain?
    * How can neuroscientific discoveries influence our economic models?
 
-There is a [neuroeconomics course][4] course on Coursera starting soon. It
-would be interesting to use the insights from this course to perform a small
-experiment, build a plausible model and validate it on data from Twitter or
-Facebook.
+There is a [neuroeconomics course][4] starting soon on Coursera. An
+interesting project would to use the insights from this course to perform a small
+experiment, build a more plausible model than what exists right now,
+and validate it on data from Twitter or Facebook.
 
 [1]: https://courses.cit.cornell.edu/info204_2007sp/
 [2]: http://www.cs.cornell.edu/home/kleinber/
