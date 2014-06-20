@@ -24,8 +24,9 @@ A verbose account of stuff I've worked on is [here](/about/).
 
 ### News
 
-   * *May - Aug 2014*: **Google Summer of Code**
-     with the [Oregon State University Open Source Lab][6].
+   * *21.04.14*: Accepted to **Google Summer of Code**
+     with the [Oregon State U][6]!
+   * *27.03.14*: Joined the [InfoCloud][1] research group at KAUST!
 
 [1]: http://cloud.kaust.edu.sa/
 [2]: http://www.kaust.edu.sa/
