@@ -81,8 +81,8 @@ making, but it pulls in perspectives from neuroscience. Concretely, it asks:
    * How can neuroscientific discoveries influence our economic models?
 
 There is a [neuroeconomics course][4] starting soon on Coursera. An
-interesting project would to use the insights from this course to perform a small
-experiment, build a more plausible model than what exists right now,
+interesting project would be to use the insights from this course to perform a
+social experiment, build a more plausible model than what exists right now,
 and validate it on data from Twitter or Facebook.
 
 [1]: https://courses.cit.cornell.edu/info204_2007sp/
