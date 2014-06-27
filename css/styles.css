@@ -45,10 +45,6 @@ thead {
     border-bottom: 1px solid #666;
 }
 
-code span {
-    white-space: nowrap;
-}
-
 pre {
     overflow-x: auto;
     overflow-y: hidden;
@@ -214,6 +210,23 @@ p.feature-image img {
 .content img {
     display: block;
     margin: 0 auto;
+}
+
+.content .frame {
+  position: relative;
+  padding-bottom: 65.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: auto;
+  -webkit-overflow-scrolling:touch;
+}
+
+.content .frame iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .content .caption {

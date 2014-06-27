@@ -150,7 +150,7 @@ $ sudo python setup.py install
 
 Fire up your Python REPL and mimic the statement flow in the listing below:
 
-{% highlight pycon %}
+{% highlight python %}
 >> import beanstalkc
 >> bean = beanstalkc.Connection(host='127.0.0.1', port=11300)
 >> bean.put('Lala') 
