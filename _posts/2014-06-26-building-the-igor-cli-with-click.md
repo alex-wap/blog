@@ -179,7 +179,7 @@ performing no validation themselves.
 As an example, consider the `ipmitool power` command that takes exactly one of `on|off|reset|cycle`
 as a `state` parameter. The Igor CLI takes the `--state` argument and sends it to the Igor
 REST API. The REST API in turn passes it on to `ipmitool` via the [pyipmi][20] module, which raises
-an `IpmiException` if there is anything wrong. If such an exception occurs, the API returns
+an `IpmiError` if there is anything wrong. If such an exception occurs, the API returns
 a message (with a HTTP 400 error), which is then displayed by the CLI's `make_api_request` function.
 
 With this strategy, if `ipmitool` begins accepting a new `monkey` power state, we would not need any
@@ -189,9 +189,9 @@ code changes at all!
 
 The Igor CLI is easily installable using [pip](https://pypi.python.org/pypi/pip):
 
-```
+{% highlight bash %}
 pip install git+https://github.com/emaadmanzoor/igor-cli.git
-```
+{% endhighlight %}
 
 It currently allows one to add, remove, view and update users, machines and user-machine
 permission pairs. It also allows one to view and set a machine's power state. The remaining IPMI
