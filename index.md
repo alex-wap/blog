@@ -24,6 +24,7 @@ A verbose account of stuff I've worked on is [here](/about/).
 
 ### News
 
+   * *25.07.14*: Selected for [PennApps X Fall 2014](http://2014f.pennapps.com/)!
    * *21.04.14*: Accepted to **Google Summer of Code**
      with the [Oregon State U][6]!
    * *27.03.14*: Joined the [InfoCloud][1] research group at KAUST!
