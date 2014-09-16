@@ -24,6 +24,8 @@ A verbose account of stuff I've worked on is [here](/about/).
 
 ### News
 
+   * *15.06.15*: Won best Mashery hack at [PennApps X](http://2014f.pennapps.com/) for [Snipbase](http://challengepost.com/software/snipbase)!
+   * *26.08.14*: Successfully completed my [GSoC '14 project][7] with the [OSUOSL][6]!
    * *25.07.14*: Selected for [PennApps X Fall 2014](http://2014f.pennapps.com/)!
    * *21.04.14*: Accepted to **Google Summer of Code**
      with the [Oregon State U][6]!
@@ -35,3 +37,4 @@ A verbose account of stuff I've worked on is [here](/about/).
 [4]: http://www.bits-pilani.ac.in/goa/
 [5]: https://www.lri.fr/~xlzhang/
 [6]: https://www.google-melange.com/gsoc/org2/google/gsoc2014/osuosl
+[7]: https://www.google-melange.com/gsoc/project/details/google/gsoc2014/emaadmanzoor/5693417237512192
