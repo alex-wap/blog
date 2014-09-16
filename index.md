@@ -24,7 +24,7 @@ A verbose account of stuff I've worked on is [here](/about/).
 
 ### News
 
-   * *15.06.15*: Won best Mashery hack at [PennApps X](http://2014f.pennapps.com/) for [Snipbase](http://challengepost.com/software/snipbase)!
+   * *14.09.14*: Won best Mashery hack at [PennApps X](http://2014f.pennapps.com/) for [Snipbase](http://challengepost.com/software/snipbase)!
    * *26.08.14*: Successfully completed my [GSoC '14 project][7] with the [OSUOSL][6]!
    * *25.07.14*: Selected for [PennApps X Fall 2014](http://2014f.pennapps.com/)!
    * *21.04.14*: Accepted to **Google Summer of Code**
