@@ -9,5 +9,19 @@
     </div>
     {% if !(page.homepage == True) %}
     <p class=author-bio>{{ site.author_bio }}</p>
+    {% else %}
+    <div class=home-nav>
+        <ul>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#work-experience">Work</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li>
+                <a class=resume-link href="/resume.pdf">Resume</a><br/>
+                <span style="font-size: 0.8em;">(Updated Sep. '14)</span>
+            </li>
+        </ul>
+    </div>
     {% endif %}
 </div>

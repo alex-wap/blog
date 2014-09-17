@@ -88,6 +88,28 @@ p code, ul code {
     text-decoration: none;
 }
 
+.home-nav {
+    font-size: 1.2em;
+    margin-top: 1em;
+}
+
+.home-nav ul {
+    list-style-type: none;
+}
+
+.home-nav ul li {
+    margin-bottom: 0.5em;
+}
+
+.home-nav a {
+    color: #333;
+    text-decoration: none;
+}
+
+.resume-link {
+    color: #b31414 !important;
+}
+
 .nav a {
     padding-left: 1em;
     text-decoration: none;
