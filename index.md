@@ -48,7 +48,7 @@ social, economic, graph and game theory.
 
 #### Professional
 
-   * [Igor](/osuosl/). Oregon State University, Summer 2014.
+   * [Igor](/tags/#gsoc2014-ref/). Oregon State University, Summer 2014.
    * [Timesense](/yahoo/). Yahoo!, 2012 - 2013 & Fall 2011. 
    * [Comicreel](/tachyon/). Tachyon Technologies, Summer 2012.
    * [MVHub](http://thecsl.org/go/fake-blog/packaged_divorce.shtml). UMass Lowell, Summer 2011.
