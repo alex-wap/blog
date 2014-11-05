@@ -13,6 +13,7 @@ social, economic, graph and game theory.
 
 ### News
 
+   * *04.11.14*: [Top 100 (of 1720 teams)](http://www.ieee.org/membership_services/membership/students/competitions/xtreme/xtreme8ranking_overall.pdf) as LogisticAggression (w/ [Maruan Alshedivat](http://maruan.alshedivat.com)) in IEEEXtreme 8.0!
    * *14.09.14*: Won best Mashery hack at
    [PennApps X](http://2014f.pennapps.com/) for
    [Snipbase](http://challengepost.com/software/snipbase)!
