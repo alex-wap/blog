@@ -233,12 +233,12 @@ CMU                 | December 2
 Stanford            | December 8
 Columbia            | December 14
 Wisconsin-Madison   | December 14
-UCSB                | December 14
-UIUC                | December 14
+UC Santa Barbara    | December 14
+UI Urbana-Champaign | December 14
 Cornell             | December 14
 Purdue              | December 14
-Maryland            | December 14
+U Maryland          | December 14
 Brown               | December 14
-Stony Brook         | January 14
+SUNY Stony Brook    | January 14
 
 </div>
