@@ -209,7 +209,7 @@ that was sponsored by Intel.
 
 *IEEE Xtreme 8.0 Programming Competition 2014*
 
-I placed in the top 100 worldwide (of 1720 teams), and rank 1 in the university and
+I placed in the top 100 worldwide (out of 1720 teams), and rank 1 in the university and
 region.
 
 *Paper Reviewing*
@@ -223,3 +223,22 @@ I have reviewed papers for the following conferences and journals:
 
 I helped write the proposal for the first [Twitter Data Grant](https://blog.twitter.com/2014/introducing-twitter-data-grants)
 offered in 2014. However, we were not among the 6 research projects selected for the grant.
+
+## Target Universities
+
+<div class="table-wrapper">
+
+**University** | **Deadline**
+CMU                 | December 2
+Stanford            | December 8
+Columbia            | December 14
+Wisconsin-Madison   | December 14
+UCSB                | December 14
+UIUC                | December 14
+Cornell             | December 14
+Purdue              | December 14
+Maryland            | December 14
+Brown               | December 14
+Stony Brook         | January 14
+
+</div>
