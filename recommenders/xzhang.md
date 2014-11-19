@@ -40,7 +40,6 @@ the page contain more general information about my past projects.
 ## Research
 
 ### Summary
-{:.no_toc}
 
 I worked on classifying malware Android applications using only
 the permissions they request. I introduced the formulation of
@@ -49,7 +48,6 @@ us insights into *types* of apps based on the *topics*
 discovered by LDA.
 
 ### Weekly Progress
-{:.no_toc}
 
 Below I have attached my reports and a bullet-point summary
 of my work in each week.
@@ -98,9 +96,32 @@ of my work in each week.
 
 ## Current Research
 
+### Summary
+
    * *Topic:* Scheduling broadcasts to maximize organic reach in a network of
-     timelines ([early draft](https://docs.google.com/document/d/1ZpmqcH9hR4GvjTg99V56tCX41oxmXRO2nhBXYIfduM8/edit?usp=sharing)).
+         timelines ([early draft](https://docs.google.com/document/d/1ZpmqcH9hR4GvjTg99V56tCX41oxmXRO2nhBXYIfduM8/edit?usp=sharing)).<br/>
    * *Target submission:* KDD 2015. 
+
+*My contributions*
+
+   1. I surveyed literature and *identified a research problem* that is of interest
+      to both the industry and academic community, and that has not been attempted
+      to be solved before.
+   2. I have *identified a new phenomenon* of monotony aversion in social networks
+      that has been mentioned and overlooked in many previous papers,
+      but never validated or quantified.
+   3. I attempted performing some analysis and formulating the problem using queuing
+      theory, but got stuck. I took a course on random processes this semester, and
+      after a few months into the course, was *successfully able to use the new
+      techniques I learnt* to formulate the problem elegantly.
+   4. I was able to *independently obtain real-world data access* to Twitter unfollows
+      from a company, by contacting a KAUST alumnus working in that company and
+      persuading the CEO to collaborate.
+
+I am the sole contributor to the coding, mathematical modeling and paper writing in
+the project so far.
+
+### Extended Abstract
 
 In a typical social network, actions taken by users are *broadcast*
 and appear on their friends' *timelines*. Timelines may be ordered chronologically,
