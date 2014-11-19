@@ -37,7 +37,7 @@ You can find below some reports, presentations and other details about
 my research and coursework with you so far. The links to the left of
 the page contain more general information about my past projects.
 
-## Research
+## Past Research
 
 ### Summary
 
@@ -87,7 +87,7 @@ of my work in each week.
 
    * Evaluated k-means clustering on the 50-topics dimensionally reduced
      LDA data using homogeneity, completeness and V-measure.
-   * Manually labeled LDA topics to observe their relation to application
+   * Manually labelled LDA topics to observe their relation to application
      *functions*.
    * Noted an application *type* as a higher-level representation of functions,
      and studied hierarchical graphical models as a possible solution.
@@ -107,18 +107,18 @@ of my work in each week.
    1. I surveyed literature and *identified a research problem* that is of interest
       to both the industry and academic community, and that has not been attempted
       to be solved before.
-   2. I have *identified a new phenomenon* of monotony aversion in social networks
-      that has been mentioned and overlooked in many previous papers,
+   2. I have *identified a new phenomenon* I call monotony aversion in social networks
+      with timelines, which has been mentioned and overlooked in many previous papers,
       but never validated or quantified.
-   3. I attempted performing some analysis and formulating the problem using queuing
-      theory, but got stuck. I took a course on random processes this semester, and
-      after a few months into the course, was *successfully able to use the new
-      techniques I learnt* to formulate the problem elegantly.
-   4. I was able to *independently obtain real-world data access* to Twitter unfollows
-      from a company, by contacting a KAUST alumnus working in that company and
-      persuading the CEO to collaborate.
+   3. I attempted performing some analysis and formulating the scheduling problem
+      using queuing theory, but got stuck. I took a course on random processes this
+      semester, and after a few months into the course, was *successfully able to
+      use the new techniques I learnt* to formulate the problem elegantly.
+   4. I was able to *independently obtain real-world data access* to Twitter
+      "unfollows" from a company, by contacting a KAUST alumnus working in that
+      company and persuading the CEO to collaborate.
 
-I am the sole contributor to the coding, mathematical modeling and paper writing in
+I am also the sole contributor to the coding, mathematical modelling and paper writing in
 the project so far.
 
 ### Extended Abstract
@@ -158,7 +158,7 @@ This question motivates the following contributions in this work:
       Sina Weibo. I will formally define monotony aversion, which has only been
       mentioned anecdotally earlier, and validate its existence on a large Twitter
       dataset I am collecting right now. This is the first such user model
-      incorporating all of these important behaviors.
+      incorporating these behaviours.
    
    * *The Broadcast Scheduling Problem:* I will introduce and formalize the
       broadcast scheduling problem with the aforementioned model. Then I will
@@ -188,15 +188,38 @@ talks are also available [here](/#talks).
 
 <script async class="speakerdeck-embed" data-id="20c84bc0be990131474566935fc535a5" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
 
-## Awards
+## Other Activities
 
-Here are some awards I won while at KAUST.
+*Google Summer of Code 2014*
 
-   * $5000 Google Summer of Code award and mentorship working on an
-     open-source project in the summer of 2014.
-   * Worldwide top 100 (of 1720 teams), university and region rank 1 in the
-     IEEE Xtreme 8.0 Programming Competition.
-   * Best Mashery application in PennApps X at the University of Pennsylvania
-     (sponsored by Intel).
-   * $500 travel grant to participate in PennApps X at University of Pennsylvania
-     (sponsored by PennApps).
+I was accepted by and awarded *$5000 in funding* from Google to spend the summer of
+2014 contributing to an open-source project for the Oregon State University.
+[Less than 30% of the applicants](http://google-opensource.blogspot.in/2014/04/students-announced-for-google-summer-of.html)
+were accepted into this programme.
+
+*PennApps X Hackathon 2014*
+
+I was selected to participate and awarded a *$500 travel grant* for the [PennApps X](http://2014f.pennapps.com/)
+competition. Only [30% of the applicants](https://medium.com/pennapps-x/pennapps-x-application-stats-655f9a04f991)
+were selected to participate, and 74 international travel grants were awarded,
+out of 2360 applicants in total.
+
+In the hackathon, I won the *Best Mashery Application* award out of 250 other teams,
+that was sponsored by Intel.
+
+*IEEE Xtreme 8.0 Programming Competition 2014*
+
+I placed in the top 100 worldwide (of 1720 teams), and rank 1 in the university and
+region.
+
+*Paper Reviewing*
+
+I have reviewed papers for the following conferences and journals:
+
+   * VLDBJ (1 paper)
+   * CIKM 2014 (2 papers)
+
+*Twitter Data Grant*
+
+I helped write the proposal for the first [Twitter Data Grant](https://blog.twitter.com/2014/introducing-twitter-data-grants)
+offered in 2014. However, we were not among the 6 research projects selected for the grant.
