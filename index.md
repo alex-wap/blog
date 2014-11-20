@@ -135,6 +135,8 @@ social, economic, graph and game theory.
 ### Talks
 
    * *Time-Inconsistent Planning: A Computational Problem in Behavioral Economics*. InfoCloud Seminar, Spring 2014. ([Slides](https://speakerdeck.com/emaadmanzoor/time-inconsistent-planning))
+   
+   * *Efficient Spatial Sampling of Large Geographical Tables*. InfoCloud Seminar, Spring 2014. ([Slides](https://speakerdeck.com/emaadmanzoor/efficient-spatial-sampling-of-large-geographical-tables))
 
    * *Time-sensitive Network Inference in Continuous-Time Diffusion Networks*. Machine Learning Course Project Presentation, Spring 2014. ([Slides](https://speakerdeck.com/emaadmanzoor/time-sensitive-network-inference-in-diffusion-networks))
 
