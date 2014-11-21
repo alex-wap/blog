@@ -96,30 +96,37 @@ of my work in each week.
 
 ## Current Research
 
-### Summary
+For my thesis research, I am working on *scheduling broadcasts to maximize organic
+reach in a network of timelines* ([early paper draft](https://docs.google.com/document/d/1ZpmqcH9hR4GvjTg99V56tCX41oxmXRO2nhBXYIfduM8/edit?usp=sharing)).
+I am also the sole student working on this project, including the coding,
+mathematical modelling, algorithm design and paper writing.
 
-   * *Topic:* Scheduling broadcasts to maximize organic reach in a network of
-         timelines ([early draft](https://docs.google.com/document/d/1ZpmqcH9hR4GvjTg99V56tCX41oxmXRO2nhBXYIfduM8/edit?usp=sharing)).<br/>
-   * *Target submission:* KDD 2015. 
+### Contributions
 
-*My contributions*
+   * *Problem identification:* I surveyed literature and identified a research
+      problem that is of interest to both the industry and academic community,
+      and for which a solution has not been attempted before.
 
-   1. I surveyed literature and *identified a research problem* that is of interest
-      to both the industry and academic community, and that has not been attempted
-      to be solved before.
-   2. I have *identified a new phenomenon* I call monotony aversion in social networks
-      with timelines, which has been mentioned and overlooked in many previous papers,
-      but never validated or quantified.
-   3. I attempted performing some analysis and formulating the scheduling problem
-      using queuing theory, but got stuck. I took a course on random processes this
-      semester, and after a few months into the course, was *successfully able to
-      use the new techniques I learnt* to formulate the problem elegantly.
-   4. I was able to *independently obtain real-world data access* to Twitter
-      "unfollows" from a company, by contacting a KAUST alumnus working in that
-      company and persuading the CEO to collaborate.
+   * *Novel insights:* The monotony aversion phenomenon, of users being annoyed when seeing too many
+      posts by the same person, is studied and quantified in this work for the first
+      time.
 
-I am also the sole contributor to the coding, mathematical modelling and paper writing in
-the project so far.
+   * *Real-world data:* I was able to connect with the CEO of a Twitter follower
+      analysis company and persuade him to collaborate, thus obtaining Twitter
+      unfollow data which is tracked by very few companies
+      (Twitter itself does not).
+
+   * *User modelling:* I have constructed a novel model of social network users
+      and am in the process of validating my hypotheses on large datasets from
+      Twitter (initial experiments are in the draft).
+
+   * *Problem formulation/solution:* I have formulated the problem as a discrete
+      optimisation task, of constructing a stream in the presence of competitors.
+      I am in the process of designing an efficient algorithm to solve it.
+
+   * *Real-world system*: I plan to build a real-world tweet scheduling system
+      and evaluate it on the *@KAUST_News* Twitter account, which has over 10,000
+      followers.
 
 ### Extended Abstract
 
@@ -142,8 +149,8 @@ Hence, posts produced must be carefully scheduled to appear near the top of each
 friend's timeline, or risk never being seen.
 
 A naive solution to this is to flood the network by producing posts at a very
-high rate. However, this would result in increased *irritation* and possible
-unfriending or unfollowing.
+high rate. However, this would result in increased irritation and possible
+unfriending or unfollowing. I call this phenomenon *monotony aversion*.
 
 How can one then produce posts to maximize the organic reach, by maintaining a
 balance between the varied sleep-cycles and tolerances to irritation of different
@@ -152,14 +159,15 @@ users?
 This question motivates the following contributions in this work:
 
    * *The User Model:* I will construct a model of users exhibiting information
-      overload, bursty circadian rhythms and monotony aversion. Information overload
-      has been studied and validated in prior research. I have
-      validated the bursty circadian rhythms hypothesis on a large dataset from
-      Sina Weibo. I will formally define monotony aversion, which has only been
-      mentioned anecdotally earlier, and validate its existence on a large Twitter
-      dataset I am collecting right now. This is the first such user model
+      overload, bursty circadian rhythms and monotony aversion. I will also formally
+      define and quantify monotony aversion. This is the first such user model
       incorporating these behaviours.
-   
+
+   * *Model Validation:* Information overload has been studied and validated in
+      prior research. I have validated the bursty circadian rhythms hypothesis on a
+      large dataset from Sina Weibo. I will formally define and quantify monotony aversion, and
+      validate its existence on a large Twitter dataset.
+
    * *The Broadcast Scheduling Problem:* I will introduce and formalize the
       broadcast scheduling problem with the aforementioned model. Then I will
       design an algorithm to construct an optimal schedule.
