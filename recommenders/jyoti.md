@@ -196,8 +196,8 @@ I have reviewed papers for the following conferences and journals:
 <div class="table-wrapper">
 
 **University** | **Deadline**
-CMU                 | December 2
 Stanford            | December 8
+CMU                 | December 14
 Columbia            | December 14
 Wisconsin-Madison   | December 14
 UC Santa Barbara    | December 14
