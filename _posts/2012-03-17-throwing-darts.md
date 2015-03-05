@@ -28,7 +28,7 @@ the how's and why's of building the system from the ground up with
    * We used [Beanstalkc][4] for Python bindings.
    * Our system is *fully worker-fault-tolerant*.
    * Our system is *partially server-fault-tolerant*.
-   * Our code is [open-source][1].
+   * Our code is open-source: [Monte-Carlo π estimation][1] and [matrix-vector multiplication](https://github.com/racheesingh/Beanstalkd-Cluster).
  
 ## Contents
 {:.no_toc}
