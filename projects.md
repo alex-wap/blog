@@ -54,11 +54,6 @@ permalink: /projects/
    * Sync XKCD comics to disk, with alt-text! ([Code](https://github.com/emaadmanzoor/xkcd.pl))
    * Send free SMS by reverse-engineering 160by2.com. ([Code](https://github.com/emaadmanzoor/pyFreeSMS))
 
-#### Volunteer
-
-   * [Eye donation awareness video](http://www.youtube.com/watch?v=4GYvi0BYvks). [BW Lions Eye Hospital](http://www.bwlionseye.org/), Summer 2009.
-   * Dictated literature to a blind Braille typist. [Abilities](http://www.ashanet.org/projects/project-view.php?p=5]), Summer 2005.
-
 [1]: https://www.google-melange.com/gsoc/project/details/google/gsoc2014/emaadmanzoor/5693417237512192
 [2]: https://www.google-melange.com/gsoc/org2/google/gsoc2014/osuosl
 [3]: http://tachyon.in

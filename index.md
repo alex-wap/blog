@@ -12,8 +12,8 @@ malware classification using graphical models. I am broadly interested in
 social, economic, graph and game theory.
 
 I was previously a software engineer at [Yahoo!][6] where I worked in the
-[Timesense](/yahoo/) team. I was an undergraduate at [BITS - Pilani, Goa Campus][4]
-where I was fairly [active](/leadership/) on the extra-curricular front.
+[Timesense](/yahoo/) team. Before that, I was an undergraduate at
+[BITS - Pilani, Goa Campus][4].
 
 ### News
 
