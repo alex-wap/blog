@@ -27,3 +27,7 @@ kramdown:
 permalink: /blog/:year/:month/:day/:title/
 relative_permalinks: false
 highlighter: pygments
+
+# important since the site is compiled
+# on Github's servers
+timezone: Asia/Riyadh
