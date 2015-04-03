@@ -7,9 +7,6 @@
         <a href="{{ site.linkedin_url }}"><i class=icon-linkedin></a></i>
         <a href="{{ site.feed_url }}"><i class=icon-rss></i></a>
     </div>
-    {% if !(page.homepage == True) %}
-    <p class=author-bio>{{ site.author_bio }}</p>
-    {% else %}
     <div class=home-nav>
         <ul>
             <li><a href="/blog/">Blog</a></li>
@@ -24,5 +21,4 @@
             </li>
         </ul>
     </div>
-    {% endif %}
 </div>
