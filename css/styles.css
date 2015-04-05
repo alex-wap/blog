@@ -332,6 +332,11 @@ p.feature-image img {
     width: 60%;
 }
 
+.jrnl-content img {
+    border: 1px solid #000;
+    margin-top: 1em;
+}
+
 .tags ul {
     list-style-type: none;
 }
