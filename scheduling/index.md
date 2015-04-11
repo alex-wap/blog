@@ -9,12 +9,7 @@ Supplementary information for our KDD '15 submission.
 
 ## Paper
 
-[Preprint](2015.KDD.EmaadAhmedManzoor.pdf); a changelog is below:
-
-   * 2015.04.08: Fixes based on reviewer comments.
-      * Defined *U*, corrected *F/R* typo.
-
-   * 2015.02.20: KDD '15 submission.
+[Preprint](2015.KDD.EmaadAhmedManzoor.pdf).
 
 ## Data
 
