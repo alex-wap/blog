@@ -48,3 +48,13 @@ of retweets to and replies of *a*'s tweets by *b*. The code linked above evaluat
 between attention and reactions in the Twitter dataset.
 
 ## Monotony Aversion
+
+[Annotated code](https://gist.github.com/emaadmanzoor/55f2b1c72764a2ba9bfd).
+
+The code linked above computes statistics of author-occurence clusters.
+For each cluster size, it reports the following:
+
+   * The number of clusters of this size.
+   * The number of tweets arising from clusters of this size.
+   * The number of tweets reacted to in clusters of this size.
+   * The number of clusters of this size containing at least one reaction.
