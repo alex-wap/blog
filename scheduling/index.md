@@ -31,7 +31,10 @@ of this data for convenient reuse in code:
       1. Tweet creator ID.
       2. Tweet creation time (in milliseconds since the epoch).
       3. Retweeted user ID (-1 if not a retweet).
-      4. Replied-to user ID (-1 if not a reply).
+      4. Replied-to user ID (-1 if not a user-reply).
+      5. The tweet ID.
+      6. Retweeted tweet ID (-1 if not a retweet).
+      7. Replied-to tweet ID (-1 if not a tweet-reply)
 
 ## Attention Potential Validation
 
