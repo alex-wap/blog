@@ -36,7 +36,7 @@ of this data for convenient reuse in code:
       6. Retweeted tweet ID (-1 if not a retweet).
       7. Replied-to tweet ID (-1 if not a tweet-reply)
 
-## Attention Potential Validation
+## Attention Potential
 
 [Annotated code](https://gist.github.com/emaadmanzoor/a1e6632f905fa6bcbbcb).
 
