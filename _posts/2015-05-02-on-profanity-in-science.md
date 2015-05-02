@@ -29,4 +29,6 @@ prefacing some technical text which has been commented
 out; and the comment “Who the fuck is —?” immediately
 after an acknowledgment to the named individual.
 
-The rest of the paper is as enjoyable and illuminating; a rare combination, but coming from [this guy](http://www.cs.rutgers.edu/~muthu/onfire.jpg), possibly expected.
+The rest of the paper is as enjoyable and illuminating; a rare combination, but coming from Muthukrishnan (depicted below on fire), possibly expected.
+
+![Muthukrishnan on fire](http://www.cs.rutgers.edu/~muthu/onfire.jpg)
