@@ -31,4 +31,4 @@ after an acknowledgment to the named individual.
 
 The rest of the paper is as enjoyable and illuminating; a rare combination, but coming from Muthukrishnan (depicted below on fire), possibly expected.
 
-![Muthukrishnan on fire](http://www.cs.rutgers.edu/~muthu/onfire.jpg)
+[![Muthukrishnan on fire](http://www.cs.rutgers.edu/~muthu/onfire.jpg)](http://www.cs.rutgers.edu/~muthu/)
