@@ -1,15 +1,14 @@
 ---
 layout: page
 title: Scheduling Broadcasts in a Network of Timelines
-homepage: True
 permalink: /scheduling/
 ---
 
-Supplementary information for our KDD '15 submission.
+Under preparation.
 
 ## Paper
 
-[Preprint](2015.KDD.EmaadAhmedManzoor.pdf).
+Coming soon!
 
 ## Data
 
