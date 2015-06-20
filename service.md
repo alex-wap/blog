@@ -1,7 +1,6 @@
 ---
 layout: page
 title: Service 
-homepage: True
 permalink: /service/
 ---
 

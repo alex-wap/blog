@@ -1,7 +1,6 @@
 ---
 layout: page
 title: Talks
-homepage: True
 permalink: /talks/
 ---
 
