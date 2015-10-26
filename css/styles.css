@@ -293,6 +293,11 @@ p.feature-image img {
     margin-bottom: 0;
 }
 
+.footnotes {
+  font-size: 0.8em;
+  line-height: 1.5em;
+}
+
 .jrnl, .jrnl-entry {
     list-style-type: none;
     margin: 0;
@@ -345,7 +350,7 @@ p.feature-image img {
     .container {
         margin: 3em 0;
     }
-    
+
     .author-info {
         float: none;
         margin: 0 auto 3em auto;
