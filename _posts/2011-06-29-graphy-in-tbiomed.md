@@ -2,7 +2,6 @@
 layout: post
 title: Graphy In TBioMed
 tags: graphy
-feature: http://www.tbiomed.com/content/figures/1742-4682-8-5-2.jpg
 ---
 
 A tiny but significant moment of joy for Rijul and I: a [Graphy][graphy] creation
@@ -24,6 +23,5 @@ blue blobs and their attached arrows are not by the then-very-alpha Graphy. This
 that not many really care about the hard work that goes into good software; why add complex,
 one-hit-wonder functionality when a quick job with MS Paint keeps everyone happy?
 
-[figure]: http://www.tbiomed.com/content/figures/1742-4682-8-5-2.jpg
-[graphy]: http://emaadmanzoor.github.com/graphy"
+[graphy]: http://emaadmanzoor.github.com/graphy
 [publication]: http://www.tbiomed.com/content/8/1/5

@@ -20,13 +20,13 @@ email: "emaadmanzoor@gmail.com"
 # Markdown rendering
 markdown: kramdown
 kramdown:
-  smart_quotes: apos,apos,quot,quot
+  #  smart_quotes: apos,apos,quot,quot
   parse_block_html: true
 
 # Site settings
 permalink: /blog/:year/:month/:day/:title/
 relative_permalinks: false
-highlighter: pygments
+highlighter: rouge
 
 # important since the site is compiled
 # on Github's servers
