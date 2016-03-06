@@ -4,6 +4,10 @@ title: Talks
 permalink: /talks/
 ---
 
+   * *Greening Backbone Networks*. Green IT and Smart Grid Course Lecture, Spring 2016. ([Slides](https://speakerdeck.com/emaadmanzoor/greening-backbone-networks))
+
+   * *Scheduling Broadcasts in a Network of Timelines*. Masters Thesis Defense, Spring 2015. ([Slides](https://speakerdeck.com/emaadmanzoor/scheduling-broadcasts-in-a-network-of-timelines), [Video](https://www.youtube.com/watch?v=6Z4DCCwR1UA))
+
    * *Time-Inconsistent Planning: A Computational Problem in Behavioral Economics*. InfoCloud Seminar, Spring 2014. ([Slides](https://speakerdeck.com/emaadmanzoor/time-inconsistent-planning))
    
    * *Efficient Spatial Sampling of Large Geographical Tables*. InfoCloud Seminar, Spring 2014. ([Slides](https://speakerdeck.com/emaadmanzoor/efficient-spatial-sampling-of-large-geographical-tables))
