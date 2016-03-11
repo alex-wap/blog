@@ -7,6 +7,10 @@ permalink: /projects/
 
 #### Research
 
+   * [Mining Anomalous Graphs from Edge Streams](http://www3.cs.stonybrook.edu/~emanzoor/streamspot).<br/>
+     With [Leman Akoglu](http://www3.cs.stonybrook.edu/~leman/).<br/>
+     Aug 2015 - Now.
+
    * [Scheduling Broadcasts in a Network of Timelines](/scheduling/).<br/>
      With [Haewoon Kwak](http://haewoon.io/) and [Panos Kalnis](http://www.panoskalnis.com/).<br/>
      Jan 2014 - Now.
