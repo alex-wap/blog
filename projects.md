@@ -29,6 +29,8 @@ permalink: /projects/
 
 #### Course
 
+   * [CockroachOS](https://github.com/emaadmanzoor/CSE506)
+     Operating Systems, Stony Brook University, Fall 2015 - with Prof. Mike Ferdman.
    * [xv6 kernel enhancements](https://github.com/emaadmanzoor/xv6).
      Operating Systems, KAUST, Fall 2013 - with Prof. Hany Ramadan.
    * [Streaming cardinality estimation](https://github.com/emaadmanzoor/streaming-unique-counting).
