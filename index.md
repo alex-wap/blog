@@ -5,8 +5,9 @@ permalink: /
 ---
 
 {: style="margin-top:0; margin-bottom: 0;"}
-I am a first-year PhD student at [Stony Brook University][9] working with
-[Leman Akoglu][10] on detecting anomalies in graph-structured data.
+Starting Fall 2016, I will be a PhD student at [Carnegie Mellon University][12],
+working with [Leman Akoglu][10]. I transferred here following my advisor's move
+from [Stony Brook University][9].
 
 I received my master's degree from [KAUST][2], where I worked with
 [Panos Kalnis][3] on [scheduling broadcasts][11] in social networks with timelines.
@@ -38,3 +39,4 @@ work with the [Timesense](/yahoo/) team. Before that, I was an undergraduate at
 [9]: http://www.stonybrook.edu/
 [10]: http://www3.cs.stonybrook.edu/~leman/
 [11]: http://repository.kaust.edu.sa/kaust/handle/10754/552703
+[12]: http://www.cmu.edu/
