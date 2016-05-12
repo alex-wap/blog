@@ -18,6 +18,8 @@ work with the [Timesense](/yahoo/) team. Before that, I was an undergraduate at
 
 ### News
 
+   * *05.12.16*: [StreamSpot](http://bit.ly/streamspot) accepted to [KDD '16](http://www.kdd.org/kdd2016/) as a full oral presentation! (acceptance rate 70/784 = 8.9%)
+   * *08.11.15*: Joined the [DATA Lab](http://www3.cs.stonybrook.edu/~datalab/) at [Stony Brook University][9]!
    * *04.11.14*: [Top 100 (of 1720 teams)](http://www.ieee.org/membership_services/membership/students/competitions/xtreme/xtreme8ranking_overall.pdf) as LogisticAggression (w/ [Maruan Alshedivat](http://maruan.alshedivat.com)) in IEEEXtreme 8.0!
    * *14.09.14*: Won best Mashery hack at
    [PennApps X](http://2014f.pennapps.com/) for
