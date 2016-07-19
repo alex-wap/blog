@@ -24,9 +24,9 @@ work with the [Timesense](/yahoo/) team. Before that, I was an undergraduate at
    * *08.11.15*: Joined the [DATA Lab](http://www3.cs.stonybrook.edu/~datalab/) at [Stony Brook University][9]!
    * *04.11.14*: [Top 100 (of 1720 teams)](http://www.ieee.org/membership_services/membership/students/competitions/xtreme/xtreme8ranking_overall.pdf) as LogisticAggression (w/ [Maruan Alshedivat](http://maruan.alshedivat.com)) in IEEEXtreme 8.0!
    * *14.09.14*: Won best Mashery hack at [PennApps X](http://2014f.pennapps.com/) for [Snipbase](http://challengepost.com/software/snipbase)!
-   * *26.08.14*: Successfully completed my [GSoC '14 project][7] with the [OSUOSL][6]!
+   * *26.08.14*: Successfully completed my [GSoC '14 project][7]! 
    * *25.07.14*: Selected for [PennApps X Fall 2014](http://2014f.pennapps.com/)!
-   * *21.04.14*: Selected for Google Summer of Code 2014 with the [Oregon State University][6]!
+   * *21.04.14*: Selected for GSoC '14 with the Oregon State University Open Source Lab!
    * *27.03.14*: Joined the [InfoCloud][1] research group at KAUST!
 
 [1]: http://cloud.kaust.edu.sa/
