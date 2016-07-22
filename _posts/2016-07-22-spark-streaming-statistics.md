@@ -3,7 +3,8 @@ layout: post
 title: Spark Streaming Microbatch Metrics, Programmatically via the REST API
 tags: distributed-systems 
 ---
-
+*TLDR; [metric collection script](https://github.com/lenhattan86/ccra/blob/master/flintrock-setup/get_spark_streaming_batch_statistics.py).*
+ 
 The Spark Streaming web UI shows a number of interesting metrics over time.
 [Tan](http://www3.cs.stonybrook.edu/~tnle/) and I were specifically interested
 in the (micro)batch start times, processing times and scheduling delays, which we
