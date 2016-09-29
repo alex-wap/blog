@@ -5,19 +5,28 @@ permalink: /
 ---
 
 {: style="margin-top:0; margin-bottom: 0;"}
-Starting Fall 2016, I will be a PhD student at [Carnegie Mellon University][12],
-working with [Leman Akoglu][10]. I transferred here following my advisor's move
-from [Stony Brook University][9].
+I am a second year PhD student at [Carnegie Mellon University's][12]
+[Heinz College of Information Systems and Public Policy][13].
+I spent the first year of my PhD in the [Department of Computer Science][14]
+at [Stony Brook University][9].
 
-I received my master's degree from [KAUST][2], where I worked with
-[Panos Kalnis][3] on [scheduling broadcasts][11] in social networks with timelines.
+I work with [Leman Akoglu][10] on mining and modeling structured data. I have recently
+begun incorporating microeconomic theory into my models and methods to better address
+public policy questions with an economic focus.
+
+I received a master's in computer science from [KAUST][2], where I was part of the
+[InfoCloud group][1]. I defended my thesis on the theoretical problem of
+[scheduling broadcasts in a network of timelines][11] to a committee consisting of
+[Panos Kalnis][3] (chair, databases), [Xiangliang Zhang][5] (machine learning) and
+[Antoine Vigneron][15] (theoretical computer science).
 
 In a previous life, I was a software engineer at [Yahoo!][6] where I was fortunate to
-work with the [Timesense](/yahoo/) team. Before that, I was an undergraduate at
-[BITS - Pilani, Goa Campus][4].
+work with the [Timesense](/yahoo/) team on large-scale streaming NLP.
+Before that, I was an undergraduate at [BITS - Pilani, Goa Campus][4].
 
 ### News
 
+   * *21.08.16*: Moved to the [Heinz College][13] at [CMU][12]!
    * *23.06.16*: Received a [KDD '16 Student Travel Award](http://www.kdd.org/kdd2016/registration/student-awards)!
    * *26.05.16*: Received an [IACS Young Writer's Award](http://www.iacs.stonybrook.edu/awards/writers)!
    * *05.12.16*: [StreamSpot](http://bit.ly/streamspot) accepted to [KDD '16](http://www.kdd.org/kdd2016/) as a full oral presentation! (acceptance rate 70/784 = 8.9%)
@@ -38,6 +47,9 @@ work with the [Timesense](/yahoo/) team. Before that, I was an undergraduate at
 [7]: https://www.google-melange.com/gsoc/project/details/google/gsoc2014/emaadmanzoor/5693417237512192
 [8]: http://www3.cs.stonybrook.edu/~leman/index.html
 [9]: http://www.stonybrook.edu/
-[10]: http://www3.cs.stonybrook.edu/~leman/
+[10]: http://www.andrew.cmu.edu/user/lakoglu/
 [11]: http://repository.kaust.edu.sa/kaust/handle/10754/552703
 [12]: http://www.cmu.edu/
+[13]: http://heinz.cmu.edu/
+[14]: https://www.cs.stonybrook.edu/
+[15]: http://algo.unist.ac.kr/members-2/antoine-vigneron/
