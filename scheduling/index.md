@@ -4,11 +4,10 @@ title: Scheduling Broadcasts in a Network of Timelines
 permalink: /scheduling/
 ---
 
-Under preparation.
-
-## Paper
-
-Coming soon!
+   * [Paper](https://arxiv.org/abs/1610.06052)
+   * [Thesis](http://repository.kaust.edu.sa/kaust/handle/10754/552703)
+   * [Slides](https://speakerdeck.com/emaadmanzoor/scheduling-broadcasts-in-a-network-of-timelines)
+   * [Video](https://www.youtube.com/watch?v=6Z4DCCwR1UA)
 
 ## Data
 
