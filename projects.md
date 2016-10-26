@@ -7,13 +7,17 @@ permalink: /projects/
 
 #### Research
 
+   * [Predicting Purchase Behaviour from Financial Sensor Logs](#).<br/>
+     With [Leman Akoglu](http://www3.cs.stonybrook.edu/~leman/).<br/>
+     Aug 2016 - Now.
+   
    * [Mining Anomalous Graphs from Edge Streams](http://www3.cs.stonybrook.edu/~emanzoor/streamspot).<br/>
      With [Leman Akoglu](http://www3.cs.stonybrook.edu/~leman/).<br/>
-     Aug 2015 - Now.
+     Aug 2015 - Aug 2016.
 
    * [Scheduling Broadcasts in a Network of Timelines](/scheduling/).<br/>
      With [Haewoon Kwak](http://haewoon.io/) and [Panos Kalnis](http://www.panoskalnis.com/).<br/>
-     Jan 2014 - Now.
+     Jan 2014 - May 2015.
 
    * [An NLP Approach for Detecting Android Malware](/malware/).<br/>
      With [Xiangliang Zhang](https://www.lri.fr/~xlzhang/).<br/>
@@ -21,6 +25,7 @@ permalink: /projects/
 
 #### Professional
 
+   * [QED](http://qed.ai), Summer 2015.
    * [Igor][1] ([REST API](/blog/2014/08/28/building-the-igor-rest-api/) and [CLI](http://localhost:4000/blog/2014/06/26/building-the-igor-cli-with-click/)). 
      [Oregon State University][2], Summer 2014.
    * [Timesense](/yahoo/). Yahoo!, 2012 - 2013 & Fall 2011. 
@@ -29,7 +34,7 @@ permalink: /projects/
 
 #### Course
 
-   * [CockroachOS](https://github.com/emaadmanzoor/CSE506)
+   * [CockroachOS](https://github.com/emaadmanzoor/CSE506).
      Operating Systems, Stony Brook University, Fall 2015 - with Prof. Mike Ferdman.
    * [xv6 kernel enhancements](https://github.com/emaadmanzoor/xv6).
      Operating Systems, KAUST, Fall 2013 - with Prof. Hany Ramadan.
