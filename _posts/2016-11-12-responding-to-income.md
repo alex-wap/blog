@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The Elasticity of Consumption
-tags: economics, research
+tags: economics research
 ---
 
 I am interested in how individuals respond to changes in their income. The changes may affect
