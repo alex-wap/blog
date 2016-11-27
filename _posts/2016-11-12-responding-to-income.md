@@ -4,10 +4,10 @@ title: The Elasticity of Consumption
 tags: economics, research
 ---
 
-*Update:*: I found a [survey](http://web.stanford.edu/~pista/ann_rev.pdf)
+*Update:* I found a [survey](http://web.stanford.edu/~pista/ann_rev.pdf)
 that addresses exactly the same questions as outlined in this post (even
 categorizing shocks and responses similarly!).
-
+ 
 I am interested in how individuals respond to changes in their income. The changes may affect
 periodic income, temporarily or permanently, in the form of income shocks, such as layoffs, or
 be less egregious periodic income modulations such as delayed pay-days, bonuses and raises.
