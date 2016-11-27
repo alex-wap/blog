@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The Elasticity of Consumption
-tags: economics research
+tags: economics, research
 ---
 
 *Update:*: I found a [survey](http://web.stanford.edu/~pista/ann_rev.pdf)
