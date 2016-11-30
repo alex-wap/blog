@@ -3,7 +3,7 @@ layout: post
 title: Spark Streaming Microbatch Metrics, Programmatically via the REST API
 tags: distributed-systems 
 ---
-*TLDR; [metric collection script](https://github.com/lenhattan86/ccra/blob/master/flintrock-setup/get_spark_streaming_batch_statistics.py).*
+*TLDR; [metric collection script](https://gist.github.com/emaadmanzoor/cc12763a4133ca30fad8be065846ecc4).*
  
 The Spark Streaming web UI shows a number of interesting metrics over time.
 [Tan](http://www3.cs.stonybrook.edu/~tnle/) and I were specifically interested
@@ -24,7 +24,7 @@ scheduling delay. The key to how this reconstruction is done lies in the
 [BatchInfo class definition](https://github.com/apache/spark/blob/d6dc12ef0146ae409834c78737c116050961f350/streaming/src/main/scala/org/apache/spark/streaming/scheduler/BatchInfo.scala) 
 in the Spark codebase.
 
-I wrote a [script](https://github.com/lenhattan86/ccra/blob/master/flintrock-setup/get_spark_streaming_batch_statistics.py)
+I wrote a [script](https://gist.github.com/emaadmanzoor/cc12763a4133ca30fad8be065846ecc4)
 that parses the JSON from this endpoint and reconstructs these metrics, given the
 application ID (the one YARN generates for you on submission) and the YARN master
 URL. All times are in seconds. A sample execution is:
