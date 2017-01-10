@@ -2,7 +2,7 @@
 layout: page
 homepage: True
 permalink: /
-title: home
+title: Home
 ---
 
 {: style="margin-top:0; margin-bottom: 0;"}
