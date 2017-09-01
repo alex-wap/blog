@@ -6,7 +6,7 @@ title: Home
 ---
 
 {: style="margin-top:0; margin-bottom: 0;"}
-I am a second year PhD student at [Carnegie Mellon University's][12]
+I am a third year PhD student at [Carnegie Mellon University's][12]
 [Heinz College of Information Systems and Public Policy][13].
 I spent the first year of my PhD in the [Department of Computer Science][14]
 at [Stony Brook University][9] where I worked with [Leman Akoglu][10] on mining and
