@@ -9,7 +9,7 @@ title: Home
 I am a second year PhD student at [Carnegie Mellon University's][12]
 [Heinz College of Information Systems and Public Policy][13].
 I spent the first year of my PhD in the [Department of Computer Science][14]
-at [Stony Brook University][9]. I work with [Leman Akoglu][10] on mining and
+at [Stony Brook University][9] where I worked with [Leman Akoglu][10] on mining and
 modeling structured data.
 
 I received a master's in computer science from [KAUST][2], where I was part of the
