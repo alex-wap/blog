@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Teaching 
-permalink: /Teaching/
+permalink: /teaching/
 ---
 
 #### 95-813 Python Tutorial
