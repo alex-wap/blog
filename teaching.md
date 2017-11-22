@@ -4,8 +4,6 @@ title: Teaching
 permalink: /teaching/
 ---
 
-# Teaching
-
 ## 95-865 Unstructured Data Analysis (Fall 2017)
 
    * [Course website](http://www.andrew.cmu.edu/user/georgech/95-865/)
