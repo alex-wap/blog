@@ -6,6 +6,9 @@ permalink: /teaching/
 
 ## 95-865 Unstructured Data Analysis (S18)
 
+   * [2018.02.09] Recitation: Mid-mini-quiz review. 
+     ([slides](95865-recitation-mid_mini_quiz_review.pdf))
+
    * [2018.01.26] Recitation: Word Embeddings via PMI-matrix Factorization.
      ([notes](95865-recitation-word2vec_as_PMI.pdf),
       [notebook](https://gist.github.com/emaadmanzoor/1d06e0751a3f7d39bc6814941b37531d),
