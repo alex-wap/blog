@@ -6,6 +6,10 @@ permalink: /teaching/
 
 ## 95-865 Unstructured Data Analysis (S18)
 
+   * [2018.02.16] Recitation: Notes on Classification 
+     ([notes](95865-recitation-classification.pdf),
+      [notebook](https://gist.github.com/emaadmanzoor/0ba78a2920ea0858b54942eff8b08820))
+   
    * [2018.02.09] Recitation: Mid-mini-quiz review. 
      ([slides](95865-recitation-mid_mini_quiz_review.pdf))
 
