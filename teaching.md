@@ -6,7 +6,8 @@ permalink: /teaching/
 
 ## 95-865 Unstructured Data Analysis (S18)
 
-Teaching evaluations: ([Mini 1](https://drive.google.com/open?id=1SFOzGDP6hft34oBe2Ggdv1GkSr2f9cM4))
+Teaching evaluations: ([Mini 1](https://drive.google.com/open?id=1SFOzGDP6hft34oBe2Ggdv1GkSr2f9cM4),
+                       [Mini 2](https://drive.google.com/open?id=1eRNjIFovqIBimYWoWSF-86vQ7felMy_b))
 
    * Recitation: Notes on Classification 
      ([notes](95865-recitation-classification.pdf),
