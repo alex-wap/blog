@@ -24,7 +24,7 @@ Before that, I was an undergraduate at [BITS - Pilani, Goa Campus][4].
 
 ### News
 
-   * *05.15.14* -- [xStream](https://cmuxstream.github.io/) accepted to the research track of [KDD '18](http://www.kdd.org/kdd2018/)! (acceptance rate 181/983 = 18.41%)
+   * *05.15.18* -- [xStream](https://cmuxstream.github.io/) accepted to the research track of [KDD '18](http://www.kdd.org/kdd2018/)! (acceptance rate 181/983 = 18.41%)
    * *05.15.17* -- [RUSH!](https://github/com/emaadmanzoor/rush) accepted to the applied data science track of [KDD '17](http://www.kdd.org/kdd2017/)! (acceptance rate 85/396 = 21.5%)
    * *05.12.16* -- [StreamSpot](http://sbustreamspot.github.io/) accepted to [KDD '16](http://www.kdd.org/kdd2016/) as a research-track oral! (acceptance rate 70/784 = 8.9%)
    * *04.11.14* -- [Top 100 (of 1720 teams)](http://www.ieee.org/membership_services/membership/students/competitions/xtreme/xtreme8ranking_overall.pdf) as LogisticAggression (w/ [Maruan Alshedivat](http://maruan.alshedivat.com)) in IEEEXtreme 8.0!
