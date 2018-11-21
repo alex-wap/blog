@@ -41,6 +41,8 @@ Teaching evaluations: ([Mini 2](https://drive.google.com/open?id=1r97q7ndpGFEH2N
       * 03: spaCy on Windows ([video](https://www.youtube.com/watch?v=hY_0YUKVNMU&list=PLcHK-U_3XaQvdjiU1d9r3dn_1xLyablE4&index=3)).
       * 04: "IOPUB data rate exceeded" ([video](https://www.youtube.com/watch?v=B_YlLf6fa5A&list=PLcHK-U_3XaQvdjiU1d9r3dn_1xLyablE4&index=4)).
 
-## 95-813 Intermediate Database Management (F17)
+## 95-813 Intermediate Database Management (F17, F18)
 
-Teaching evaluations: ([Mini 1](https://drive.google.com/open?id=1XCEhySFpHX3aRAjKWASuGEwrZpqoNhtF))
+Teaching evaluations: 
+([F17](https://drive.google.com/open?id=1XCEhySFpHX3aRAjKWASuGEwrZpqoNhtF),
+ [F18](https://drive.google.com/open?id=17EspmiMiMebvebQ_7JR92xmmtTysLw6o))
