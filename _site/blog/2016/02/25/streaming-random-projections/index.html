@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8>
+        <meta name=viewport content="width=device-width, initial-scale=1.0">
+        <meta name=description content="Blog of Emaad Ahmed Manzoor">
+        
+        <title>
+          
+            Online Random Projections | 
+          
+          Emaad Ahmed Manzoor
+        </title>
+
+        <script src=http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML.js type=text/javascript></script>
+        <script>
+            MathJax.Hub.Config({
+              "HTML-CSS": {
+                linebreaks: {
+                    automatic: true,
+                    width: "70% container"
+                },
+                styles: {
+                    ".MathJax .math": {
+                        //"border": "1px solid #ccc",
+                        //"margin": "0.1em 0",
+                        //"padding": "0.3em",
+                        //"vertical-align": "middle"
+                    },
+                    ".MathJax_Display .math": {
+                        "border": "none",
+                        "padding": "0",
+                    }
+                },
+                scale: 100
+              }
+            });
+        </script>
+                
+        <link rel=stylesheet type=text/css href=/css/pure-min.css>
+        <link rel=stylesheet type=text/css href=/css/github.css>
+        <link rel=stylesheet type=text/css href=/css/styles.css>
+        <link rel=stylesheet type=text/css href=/css/font-awesome/css/font-awesome.min.css>
+        
+        <link rel=alternate type=application/rss+xml title="RSS feed for eyeshalfclosed.com" href="/feed.xml">
+    </head>
+    <body>
+        <div class="container pure-g-r">
+            <div class=pure-u-1-4>
+                <div class=author-info>
+    <img src="/images/author-image.jpeg" class=author-image />
+    <h1 class=author-name><a href=/>Emaad Ahmed Manzoor</a></h1>
+    <div class=nav>
+        <a href="https://github.com/emaadmanzoor"><i class=icon-github-alt></i></a>
+        <a href="https://twitter.com/emaadmanzoor"><i class=icon-twitter></i></a>
+        <a href="https://linkedin.com/in/emaadmanzoor"><i class=icon-linkedin></a></i>
+        <a href="http://feeds.feedburner.com/eyeshalfclosed"><i class=icon-rss></i></a>
+    </div>
+    <div class=home-nav>
+        <ul>
+            <li><a href="https://scholar.google.com/citations?user=TcMyxM0AAAAJ">Scholar</a></li>
+            <li><a href="/blog/">Blog</a>
+                &nbsp;|&nbsp;
+                <a href="/jrnl/">jrnl</a></li>
+            <li><a href="/projects/">Projects</a>
+                &nbsp;|&nbsp;
+                <a href="https://github.com/emaadmanzoor">Code</a>
+            </li>
+            <li><a href="/talks/">Talks</a></li>
+            <li><a href="/service/">Service</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li>
+                <a class=resume-link href="/cv.pdf">CV</a><br/>
+                <span class=resume-update>(Updated Mar. '19)</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+            </div>
+            <div class=pure-u-3-4>
+                <div class=right-column>
+                    <div class=post>
+    
+    <ul class=post-meta>
+    
+    <li class=publish-time><i class=icon-calendar></i>February 25, 2016</li>
+    
+        <li>&middot;</li>
+        <li><a href="/tags/#research-ref">#research</a></li>
+    
+</ul>
+
+    <h1 class=title-large>Online Random Projections</h1>
+    <div class=content>
+        <p><img src="/images/streamhash-feature.jpg" alt="feature" />
+I recently encountered the problem of computing the similarity of pairs of
+“documents” (which, in my case, were actually graphs), where the documents
+arrived as a stream of individual words. The incoming stream of words could both
+initiate new documents and grow existing documents. Interestingly, the words of each
+document could also arrive out-of-order, but I will ignore this complication for now.</p>
+
+<p>The problem then was to continuously compute and maintain the similarity of 
+every pair of documents originating from the words in the stream. Strangely, I
+could not find any existing methods to do this even for the case of a single
+document pair, under the constraints of the data stream model (single-pass,
+bounded memory). Specifically, all the methods I surveyed needed to know
+my “vocabulary”: the unique words that could possibly arrive in the stream.
+In my case, this is never known.</p>
+
+<p>In this post, I will describe the method I developed to tackle this problem,
+while also discussing the background needed to understand why it works. The
+method itself is fairly simple and, with some help from the code snippets in this
+post, should be easy to implement and try out yourself!</p>
+
+<h3 class="no_toc" id="contents">Contents</h3>
+
+<ul id="markdown-toc">
+  <li><a href="#computing-document-similarity" id="markdown-toc-computing-document-similarity">Computing Document Similarity</a></li>
+  <li><a href="#sketching-document-similarity" id="markdown-toc-sketching-document-similarity">Sketching Document Similarity</a></li>
+  <li><a href="#streaming-document-similarity" id="markdown-toc-streaming-document-similarity">Streaming Document Similarity</a></li>
+  <li><a href="#streaming-heterogenous-graph-similarity" id="markdown-toc-streaming-heterogenous-graph-similarity">Streaming Heterogenous Graph Similarity</a></li>
+</ul>
+
+<h2 id="computing-document-similarity">Computing Document Similarity</h2>
+
+<p><img src="https://docs.google.com/drawings/d/1pypq-JElxpCNn12brQ1eW9XzD2NA0_td7aZGv7S6eyM/pub?w=1200" alt="Cosine Distance" /></p>
+
+<p class="caption"><em><strong>Computing the cosine similarity of documents D1 and D2:</strong> The documents are
+first split into their constituent words and a vocabulary index is assigned to each
+word. The documents are then represented by vectors of frequencies of the words they
+contain. Given these vectors, their magnitudes, dot-product and cosine-similarity
+can be computed.</em></p>
+
+<p>A common way to measure how similar two documents are is by their
+<a href="https://en.wikipedia.org/wiki/Cosine_similarity">cosine similarity</a>. An example of this is illustrated
+in the figure above. All documents in the collection are first split into
+their constituent words, and a <em>vocabulary index</em> is constructed which assigns
+an integer to each unique word. If the vocabulary size is <script type="math/tex">|V|</script>, each document is
+represented by a <script type="math/tex">|V|</script>-sized vector of frequencies of the words it contains.</p>
+
+<p>Given these vectors for a pair of documents, say <strong>D1</strong> and <strong>D2</strong>, their
+magnitudes are given by,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+  magn(\mathbf{D1}) &= \|\mathbf{D1}\|_2\\
+  magn(\mathbf{D2}) &= \|\mathbf{D2}\|_2,
+\end{align*} %]]></script>
+
+<p>and their cosine similarity is given by,</p>
+
+<script type="math/tex; mode=display">sim(\mathbf{D1}, \mathbf{D2}) = cos(\mathbf{D1}, \mathbf{D2})
+                                = \frac{\mathbf{D1} \cdot \mathbf{D2}}
+                                       {\|\mathbf{D1}\|_2\|\mathbf{D2}\|_2}.</script>
+
+<h3 class="no_toc" id="a-computational-problem-with-large-v">A Computational Problem With Large |V|</h3>
+
+<p>In practice, it is possible for the
+vocabulary to be extremely large. This increases the time needed to compute the
+similarity of each document pair and the memory needed to store each document.
+To address this issue, a popular approach is to <em>sketch</em> the word-frequency vectors
+that represent each document. Sketching replaces <script type="math/tex">|V|</script>-sized document vectors by
+<script type="math/tex">k</script>-sized <em>sketch</em> vectors, where <script type="math/tex">k</script> is much smaller than <script type="math/tex">|V|</script>, while accurately
+approximating the similarity of pairs of documents.</p>
+
+<h2 id="sketching-document-similarity">Sketching Document Similarity</h2>
+
+<p>An approach to sketching vectors that preserves their cosine similarity is using
+<a href="https://en.wikipedia.org/wiki/Random_projection">random projections</a>, which applies some neat tricks from linear algebra and
+probability.
+Let’s say we want to compute the similarity of documents with vectors <strong>D1</strong> and
+<strong>D2</strong> having angle θ between them. We can visualize these vectors in the XY-plane.</p>
+
+<p><img src="https://docs.google.com/drawings/d/15MsVhJreASVW-VnJYCIYTUGNS93pEysOvwQ1jqsZdaU/pub?w=1200" alt="Document Vectors" /></p>
+
+<p>Let’s pick a vector <strong>R</strong> in the plane having the same size as <strong>D1</strong> and
+<strong>D2</strong> uniformly at random in the plane. Then define a function <em>h</em> that
+operates on any such random vector <strong>R</strong> and a document vector <strong>D</strong> as follows:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+h_{\mathbf{R}}(\mathbf{D}) =
+    \begin{cases}
+      +1 ~\textrm{if}~ \mathbf{D}\cdot\mathbf{R} \geq 0,\\
+      -1 ~\textrm{if}~ \mathbf{D}\cdot\mathbf{R} < 0.
+    \end{cases} %]]></script>
+
+<p>So <script type="math/tex">h_{\mathbf{R}}(\mathbf{D1}) = h_{\mathbf{R}}(\mathbf{D2})</script> only if
+both <strong>D1</strong> and <strong>D2</strong> lie on the same side of <strong>R</strong>, and
+<script type="math/tex">h_{\mathbf{R}}(\mathbf{D1}) \neq h_{\mathbf{R}}(\mathbf{D2})</script> otherwise.
+Now what is the probability that
+<script type="math/tex">h_{\mathbf{R}}(\mathbf{D1}) = h_{\mathbf{R}}(\mathbf{D2})</script>, over all random
+choices of <strong>R</strong>? It’s easier to see what this is with another illustration.</p>
+
+<p><img src="https://docs.google.com/drawings/d/1b7SQPGmNJ3Ig_gRfFD0jsoDIaiLrqCMV5QUwIHBuh0w/pub?w=1200" alt="Random Vectors" /></p>
+
+<p>In the red region, <script type="math/tex">h_{\mathbf{R}}(\mathbf{D1}) \neq h_{\mathbf{R}}(\mathbf{D2})</script>
+since <strong>D1</strong> and <strong>D2</strong> will fall on opposite sides of any random vector <strong>R</strong> chosen
+in this region. Similarly,
+<script type="math/tex">h_{\mathbf{R}}(\mathbf{D1}) = h_{\mathbf{R}}(\mathbf{D2})</script> in the yellow region.
+The ratio of the areas of the red and yellow regions is <em>2θ/2π</em>, leading to the
+probability over random vectors <strong>R</strong>:</p>
+
+<script type="math/tex; mode=display">P_{\mathbf{R}}[h_{\mathbf{R}}(\mathbf{D1}) =  h_{\mathbf{R}}(\mathbf{D2})]
+    = 1 - θ/π.</script>
+
+<p>If we could somehow estimate this probability, we could plug it into the above
+equation to find the angle θ, and hence, find the cosine similarity of the two
+document vectors:</p>
+
+<script type="math/tex; mode=display">\begin{gather*}
+  θ = π (1 - P_{\mathbf{R}}[h_{\mathbf{R}}(\mathbf{D1}) =
+                              h_{\mathbf{R}}(\mathbf{D2})])\\
+  sim(\mathbf{D1}, \mathbf{D2}) = cos(θ)
+\end{gather*}</script>
+
+<p>It turns out that it’s easy to estimate this probability: simply pick <script type="math/tex">k</script> random
+vectors <script type="math/tex">\mathbf{R}_1, \dots, \mathbf{R}_k</script>, evaluate
+<script type="math/tex">h_{\mathbf{R_i}}(\mathbf{D1})</script> and <script type="math/tex">h_{\mathbf{R_i}}(\mathbf{D2})</script> for
+each of these vectors and then count the fraction of function values for
+which the two documents agree (i.e. function values are both +1 or both -1),</p>
+
+<script type="math/tex; mode=display">P_{\mathbf{R}}[h_{\mathbf{R}}(\mathbf{D1}) = h_{\mathbf{R}}(\mathbf{D2})]
+    \approx \frac{\sum_{i=1}^k \mathbb{1}(h_{\mathbf{R_i}}(\mathbf{D1}) =
+                                          h_{\mathbf{R_i}}(\mathbf{D2}))}
+                 {k}.</script>
+
+<p>In practice, the random vectors turn out to be sufficiently random if each
+of their elements are chosen uniformly from <script type="math/tex">\{+1, -1\}</script>.</p>
+
+<p>By fixing a set of random vectors <script type="math/tex">\mathbf{R}_1, \dots, \mathbf{R}_k</script>,
+every <script type="math/tex">|V|</script>-sized document vector <strong>D</strong> can be replaced by a <script type="math/tex">k</script>-sized <em>sketch</em>
+vector, where element <script type="math/tex">i</script> of the sketch vector is either +1 or -1 and is given by
+<script type="math/tex">h_{\mathbf{R_i}}(\mathbf{D})</script>. Thus, each sketch vector is essentially a bit
+vector and consumes very little space. Document similarity can then be estimated
+using just these sketch vectors. The accuracy of estimation improves with increasing
+<script type="math/tex">k</script>.</p>
+
+<h3 class="no_toc" id="a-computational-problem-with-unknown-v">A Computational Problem With Unknown |V|</h3>
+
+<p>Notice that in the random projections technique just described, we need to know
+<script type="math/tex">|V|</script> to construct <script type="math/tex">|V|</script>-sized random vectors. In a streaming scenario, <script type="math/tex">|V|</script>
+is never known, and may grow with time!</p>
+
+<h2 id="streaming-document-similarity">Streaming Document Similarity</h2>
+
+<p>Let’s say we could pick <script type="math/tex">k</script> functions <script type="math/tex">h_1, \dots, h_k</script> at random from a
+family of functions <script type="math/tex">\mathcal{H}</script>, where each <script type="math/tex">h \in \mathcal{H}</script> maps a word
+to an element of <script type="math/tex">\{+1, -1\}</script>. Then we could replace each random vector
+<script type="math/tex">\mathbf{R}_i</script> with a function <script type="math/tex">h_i \in \mathcal{H}</script>, as long as <script type="math/tex">\mathcal{H}</script>
+obeys the following properties:</p>
+
+<ol>
+  <li>
+    <p><em>It should be equally probable for a given word to map to +1 or -1, over
+randomly chosen <script type="math/tex">h \in \mathcal{H}</script>.</em></p>
+
+    <p>This captures the equivalence of the function <script type="math/tex">h_i</script> with <script type="math/tex">\mathbf{R}_i</script>
+whose elements are each uniformly chosen from <script type="math/tex">\{+1, -1\}</script>.</p>
+
+    <p>However, requiring only this property permits trival families such as
+<script type="math/tex">\mathcal{H} = \{h_1(w) = +1, ~h_2(w) = -1, \forall ~\textrm{words}~ w\}</script>.
+This family satisfies property (1) since the probability that any function randomly
+picked from <script type="math/tex">\mathcal{H}</script> maps a word to +1 or -1 is 1/2; note that the
+randomness originates from picking the function and not from computing the
+mapped value of a word. But each of the functions in this trivial family map
+all words to the same value, which is not very useful.</p>
+
+    <p>So we need the following additional property:</p>
+  </li>
+  <li>
+    <p><em>For a given <script type="math/tex">h \in \mathcal{H}</script>, values in {+1, -1} are equally probable
+over all words.</em></p>
+
+    <p>This ensures that a function in the family cannot map all words to the same
+value, and should evenly distribute the mapped values across all words between
++1 and -1. This still does not prevent families such as
+<script type="math/tex">\mathcal{H} = \{h_1(w), ~h_2(w) = -h_1(w), \forall ~\textrm{words}~ w\}</script>
+where <script type="math/tex">h_1</script> and <script type="math/tex">h_2</script> both satisfy property (2). This family is not
+very useful either, since the second function is correlated with the first.</p>
+
+    <p>This leads to our final desired property:</p>
+  </li>
+  <li>
+    <p><em>All the functions in <script type="math/tex">\mathcal{H}</script> are pairwise-independent.</em></p>
+  </li>
+</ol>
+
+<p>It turns out that a family satisfying these requirements is a
+a <em>2-universal (strongly universal)</em> hash function family by definition.
+Many such families exist that work on strings. One example is the multilinear family:</p>
+
+<script type="math/tex; mode=display">h(w) = m_0 + \sum_{i = 1}^n m_i w_i,</script>
+
+<p>where <script type="math/tex">w_i</script> is the integer representation of the <script type="math/tex">i^\textrm{th}</script> character of
+the word <script type="math/tex">w</script>, and <script type="math/tex">m_0, \dots, m_n</script> are uniformly random integers. The
+function above returns an integer, but this can be easily mapped to an element of
+<script type="math/tex">\{+1, -1\}</script> by extracting the MSB and some algebra.</p>
+
+<h3 class="no_toc" id="implementation">Implementation</h3>
+
+<p>To sample <script type="math/tex">k</script> functions from the strongly-universal multilinear family, it is
+only necessary to estimate the maximum word length <script type="math/tex">m = |w|_{\textrm{max}}</script>.
+Then, for each function <script type="math/tex">h_1, \dots, h_k</script>, <script type="math/tex">m + 1</script> random integers are generated
+and stored.</p>
+
+<p>The following C++ 11 snippet initializes <script type="math/tex">h_1, \dots, h_k</script> as <script type="math/tex">k</script> hash functions
+sampled uniformly at random from the multilinear family:</p>
+
+<figure class="highlight">
+  <pre><code class="language-cpp" data-lang="cpp"><span class="cp">#include &lt;random&gt;
+#define SEED 42
+</span>
+<span class="n">mt19937_64</span> <span class="n">prng</span><span class="p">(</span><span class="n">SEED</span><span class="p">);</span> <span class="cm">/* Mersenne Twister 64-bit PRNG */</span>
+
+<span class="cm">/* m = maximum word length, k = number of hash functions */</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint64_t</span><span class="o">&gt;&gt;</span> <span class="n">H</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint64_t</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">));</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kt">uint32_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">uint32_t</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">H</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">prng</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre>
+</figure>
+
+<p>Then the mapping for a word <script type="math/tex">w</script> using <script type="math/tex">h_i</script> can be computed as:</p>
+
+<figure class="highlight">
+  <pre><code class="language-cpp" data-lang="cpp"><span class="cm">/* w is a string of length &lt;= m */</span>
+<span class="kt">uint64_t</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">H</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">uint32_t</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">sum</span> <span class="o">+=</span> <span class="n">H</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint64_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">word</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">sum</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">((</span><span class="n">sum</span> <span class="o">&gt;&gt;</span> <span class="mi">63</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span></code></pre>
+</figure>
+
+<p>Notice the bitwise-and when computing the summation: this is to take care of the
+sign-extension performed when a 1-byte character is cast to a 4-byte unsigned
+integer.</p>
+
+<h2 id="streaming-heterogenous-graph-similarity">Streaming Heterogenous Graph Similarity</h2>
+
+<p>The technique described above was used to perform streaming clustering and anomaly
+detection on heterogenous graphs, where the graphs were arriving as a stream of
+individual edges. Further details are available in the paper and code at the
+<a href="http://www3.cs.stonybrook.edu/~emanzoor/streamspot">project website</a>.</p>
+
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

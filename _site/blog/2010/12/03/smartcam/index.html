@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8>
+        <meta name=viewport content="width=device-width, initial-scale=1.0">
+        <meta name=description content="Blog of Emaad Ahmed Manzoor">
+        
+        <title>
+          
+            Cell Phone + Bluetooth = Webcam! | 
+          
+          Emaad Ahmed Manzoor
+        </title>
+
+        <script src=http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML.js type=text/javascript></script>
+        <script>
+            MathJax.Hub.Config({
+              "HTML-CSS": {
+                linebreaks: {
+                    automatic: true,
+                    width: "70% container"
+                },
+                styles: {
+                    ".MathJax .math": {
+                        //"border": "1px solid #ccc",
+                        //"margin": "0.1em 0",
+                        //"padding": "0.3em",
+                        //"vertical-align": "middle"
+                    },
+                    ".MathJax_Display .math": {
+                        "border": "none",
+                        "padding": "0",
+                    }
+                },
+                scale: 100
+              }
+            });
+        </script>
+                
+        <link rel=stylesheet type=text/css href=/css/pure-min.css>
+        <link rel=stylesheet type=text/css href=/css/github.css>
+        <link rel=stylesheet type=text/css href=/css/styles.css>
+        <link rel=stylesheet type=text/css href=/css/font-awesome/css/font-awesome.min.css>
+        
+        <link rel=alternate type=application/rss+xml title="RSS feed for eyeshalfclosed.com" href="/feed.xml">
+    </head>
+    <body>
+        <div class="container pure-g-r">
+            <div class=pure-u-1-4>
+                <div class=author-info>
+    <img src="/images/author-image.jpeg" class=author-image />
+    <h1 class=author-name><a href=/>Emaad Ahmed Manzoor</a></h1>
+    <div class=nav>
+        <a href="https://github.com/emaadmanzoor"><i class=icon-github-alt></i></a>
+        <a href="https://twitter.com/emaadmanzoor"><i class=icon-twitter></i></a>
+        <a href="https://linkedin.com/in/emaadmanzoor"><i class=icon-linkedin></a></i>
+        <a href="http://feeds.feedburner.com/eyeshalfclosed"><i class=icon-rss></i></a>
+    </div>
+    <div class=home-nav>
+        <ul>
+            <li><a href="https://scholar.google.com/citations?user=TcMyxM0AAAAJ">Scholar</a></li>
+            <li><a href="/blog/">Blog</a>
+                &nbsp;|&nbsp;
+                <a href="/jrnl/">jrnl</a></li>
+            <li><a href="/projects/">Projects</a>
+                &nbsp;|&nbsp;
+                <a href="https://github.com/emaadmanzoor">Code</a>
+            </li>
+            <li><a href="/talks/">Talks</a></li>
+            <li><a href="/service/">Service</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li>
+                <a class=resume-link href="/cv.pdf">CV</a><br/>
+                <span class=resume-update>(Updated Mar. '19)</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+            </div>
+            <div class=pure-u-3-4>
+                <div class=right-column>
+                    <div class=post>
+    
+    <ul class=post-meta>
+    
+    <li class=publish-time><i class=icon-calendar></i>December 03, 2010</li>
+    
+        <li>&middot;</li>
+        <li><a href="/tags/#smartcam-ref">#smartcam</a></li>
+    
+</ul>
+
+    <h1 class=title-large>Cell Phone + Bluetooth = Webcam!</h1>
+    <div class=content>
+        <p>While I’m posting the instructions specifically for Linux boxes, a little perseverance should
+have you running it on any box that’s supported! What you’ll need is:</p>
+
+<ul>
+  <li>A Symbian/Android/Windows Mobile 6 Phone</li>
+  <li>The <a href="http://sourceforge.net/projects/smartcam/files/smartcam_linux/smartcam_linux_v_1.4.0/smartcam_1.4.0_i386.deb/download">Smartcam DEB</a>.</li>
+  <li>The <a href="http://sourceforge.net/projects/smartcam/files/smartcam_linux/smartcam_linux_v_1.4.0/smartcam-1.4.0.tar.gz/download">Smartcam Source</a>.</li>
+  <li>The file for your cell phone, you can select the one you need from <a href="http://sourceforge.net/projects/smartcam/files/">here</a>.</li>
+  <li>The <a href="http://pastebin.com/8wKNv5cP">Smartcam Kernel Module Patch</a>.</li>
+</ul>
+
+<h2 id="get-it-running">Get It Running</h2>
+
+<ul>
+  <li>Install the Smartcam DEB (a simple double-click should work in most cases).</li>
+  <li>Extract the source tarball to its own folder; a Right-click –&gt; “Extract Here”
+should work.</li>
+  <li>Copy the downloaded patch to the <code class="highlighter-rouge">driver_src</code> directory.</li>
+  <li>Open up a terminal and run these commands:</li>
+</ul>
+
+<figure class="highlight">
+  <pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cd</span> /path/to/the_extracted_smartcam_source/
+<span class="nv">$ </span><span class="nb">cd </span>driver_src
+<span class="nv">$ </span>patch <span class="nt">-p0</span> &lt; smartcam.patch
+<span class="nv">$ </span><span class="nb">sudo </span>make <span class="nt">-C</span> /lib/modules/<span class="sb">`</span>uname <span class="nt">-r</span><span class="sb">`</span>/build <span class="nv">M</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>
+<span class="nv">$ </span><span class="nb">sudo </span>modprobe videodev
+<span class="nv">$ </span><span class="nb">sudo </span>insmod smartcam.ko</code></pre>
+</figure>
+
+<ul>
+  <li>Start Smartcam!</li>
+</ul>
+
+<h2 id="known-issues">Known Issues</h2>
+
+<ul>
+  <li>
+    <p>The <code class="highlighter-rouge">patch -p0 &lt; smartcam.patch</code> command fails with some weird error: You may not have
+<code class="highlighter-rouge">patch</code> installed. A simple <code class="highlighter-rouge">sudo apt-get install patch</code> should do the trick.</p>
+  </li>
+  <li>
+    <p>The <code class="highlighter-rouge">make</code> command fails after barfing
+all over my terminal: You probably don’t have a number of dependencies required
+to compile kernel modules. While I could tell you to install every build tool possible and
+ensure you get past this block, it really doesn’t make sense. Take a closer look at the
+output on your terminal and note down statements that indicate specific programs not available. Then just run a sudo apt-get install  and give it another go! If all else fails, Google! Dependency problems crop up all the time.</p>
+  </li>
+  <li>
+    <p>The installation worked but Smartcam just doesn’t show up: You need to run 
+<code class="highlighter-rouge">sudo modprobe videodev</code> and <code class="highlighter-rouge">sudo insmod smartcam.ko</code> every time you intend to start
+Smartcam. This loads the kernel modules into memory for the current session, so you
+need not re-run the commands once you’ve done that for your current session. You’ll need
+to switch on the bluetooth on your computer before you start Smartcam!</p>
+  </li>
+</ul>
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

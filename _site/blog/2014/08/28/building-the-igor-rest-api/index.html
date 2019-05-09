@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8>
+        <meta name=viewport content="width=device-width, initial-scale=1.0">
+        <meta name=description content="Blog of Emaad Ahmed Manzoor">
+        
+        <title>
+          
+            Building the Igor REST API | 
+          
+          Emaad Ahmed Manzoor
+        </title>
+
+        <script src=http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML.js type=text/javascript></script>
+        <script>
+            MathJax.Hub.Config({
+              "HTML-CSS": {
+                linebreaks: {
+                    automatic: true,
+                    width: "70% container"
+                },
+                styles: {
+                    ".MathJax .math": {
+                        //"border": "1px solid #ccc",
+                        //"margin": "0.1em 0",
+                        //"padding": "0.3em",
+                        //"vertical-align": "middle"
+                    },
+                    ".MathJax_Display .math": {
+                        "border": "none",
+                        "padding": "0",
+                    }
+                },
+                scale: 100
+              }
+            });
+        </script>
+                
+        <link rel=stylesheet type=text/css href=/css/pure-min.css>
+        <link rel=stylesheet type=text/css href=/css/github.css>
+        <link rel=stylesheet type=text/css href=/css/styles.css>
+        <link rel=stylesheet type=text/css href=/css/font-awesome/css/font-awesome.min.css>
+        
+        <link rel=alternate type=application/rss+xml title="RSS feed for eyeshalfclosed.com" href="/feed.xml">
+    </head>
+    <body>
+        <div class="container pure-g-r">
+            <div class=pure-u-1-4>
+                <div class=author-info>
+    <img src="/images/author-image.jpeg" class=author-image />
+    <h1 class=author-name><a href=/>Emaad Ahmed Manzoor</a></h1>
+    <div class=nav>
+        <a href="https://github.com/emaadmanzoor"><i class=icon-github-alt></i></a>
+        <a href="https://twitter.com/emaadmanzoor"><i class=icon-twitter></i></a>
+        <a href="https://linkedin.com/in/emaadmanzoor"><i class=icon-linkedin></a></i>
+        <a href="http://feeds.feedburner.com/eyeshalfclosed"><i class=icon-rss></i></a>
+    </div>
+    <div class=home-nav>
+        <ul>
+            <li><a href="https://scholar.google.com/citations?user=TcMyxM0AAAAJ">Scholar</a></li>
+            <li><a href="/blog/">Blog</a>
+                &nbsp;|&nbsp;
+                <a href="/jrnl/">jrnl</a></li>
+            <li><a href="/projects/">Projects</a>
+                &nbsp;|&nbsp;
+                <a href="https://github.com/emaadmanzoor">Code</a>
+            </li>
+            <li><a href="/talks/">Talks</a></li>
+            <li><a href="/service/">Service</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li>
+                <a class=resume-link href="/cv.pdf">CV</a><br/>
+                <span class=resume-update>(Updated Mar. '19)</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+            </div>
+            <div class=pure-u-3-4>
+                <div class=right-column>
+                    <div class=post>
+    
+    <ul class=post-meta>
+    
+    <li class=publish-time><i class=icon-calendar></i>August 28, 2014</li>
+    
+        <li>&middot;</li>
+        <li><a href="/tags/#gsoc2014-ref">#gsoc2014</a></li>
+    
+</ul>
+
+    <h1 class=title-large>Building the Igor REST API</h1>
+    <div class=content>
+        <p>This weekend marks the end of my GSoC with OSUOSL. We now have a full-fledged
+<a href="https://github.com/emaadmanzoor/igor-rest-api">REST API</a>, a <a href="https://github.com/emaadmanzoor/igor-cli">hierarchical CLI</a> and more than a couple of
+<a href="https://github.com/emaadmanzoor/pyipmi/pulls?q=is%3Apr+is%3Aclosed">patches to pyipmi</a> implementing IPMI commands. I have already
+<a href="http://eyeshalfclosed.com/blog/2014/06/26/building-the-igor-cli-with-click/">talked about</a> the CLI before the midterm evaluation. In this post,
+I will focus on the Igor REST API that the CLI delegates all the heavy lifting
+to.</p>
+
+<h2 id="design">Design</h2>
+
+<p>The decision to split the overall project into two pieces (the REST API and the
+CLI) was motivated by the need of having multiple possible clients: Android
+applications, web applications and curses interfaces, to name a few. Having this
+server-client dichotomy helps us write the core logic, error handling and tests
+once for the server, and have our clients be really thin. This is also the
+philosophy embodied by the <a href="https://devcenter.heroku.com/articles/heroku-command">Heroku CLI</a>.</p>
+
+<p>The REST API serves a dual purpose: to manage machines, users and regulate their
+interactions, and to call the actual IPMI commands. The following diagram
+depicts a bird’s-eye view of the architecture:</p>
+
+<p><img src="https://docs.google.com/drawings/d/1KZ2L9Hj7nB1S1TfYvx17_ZtXdjvPtdZdmY92QE4KKlI/pub?w=960&amp;h=720" alt="Igor Architecture" title="Igor Architecture" /></p>
+
+<p><em><a href="https://docs.google.com/drawings/d/1KZ2L9Hj7nB1S1TfYvx17_ZtXdjvPtdZdmY92QE4KKlI/edit?usp=sharing">Diagram source</a></em></p>
+
+<p>Machines and users are standard resources in this architecture, accessible via
+endpoints that accept the GET, PUT, POST and DELETE verbs. In the
+back-end, both machines and users are represented by their own database
+<a href="https://github.com/emaadmanzoor/igor-rest-api/blob/master/api/models.py">models</a>.</p>
+
+<p>The API regulates interactions between the two via <em>permissions</em>: a many-to-many
+relationship between users and machines. An IPMI command can be initiated by a
+user targeting a machine only if such a permission exists between the user and
+that machine. Permissions can be granted and revoked via PUT and DELETE requests
+to the permissions endpoint.</p>
+
+<p>The API is implemented as a Flask application using <a href="http://flask-restful.readthedocs.org/en/latest/">flask-restful</a>.
+flask-restful wraps Flask’s method-based dispatching and <a href="http://flask.pocoo.org/docs/views/#method-based-dispatching">pluggable views</a>,
+providing convenient abstractions for REST applications.</p>
+
+<h2 id="users-machines-authentication-and-authorization">Users, Machines, Authentication and Authorization</h2>
+
+<p>Access regulations are of two kinds: authentication and authorization.
+Authentication performs endpoint-wide blocking and ensures the user has valid
+credentials. Authorization checks if users are permitted to access the specific
+machine they are attempting management or IPMI operations on.</p>
+
+<p>Both <a href="https://github.com/emaadmanzoor/igor-rest-api/blob/master/api/login.py#L12-L21">authentication</a> and <a href="https://github.com/emaadmanzoor/igor-rest-api/blob/master/api/login.py#L23-L41">authorization</a> are implemented as decorators.
+Protecting an endpoint then simply involves decorating the flask-restful resource
+class for that endpoint. The only tricky bit is the order of applied decorators:
+we want authentication to take place before authorization, and must hence place
+authorization <em>before</em> authentication in the decorators array
+(decorators are applied outward-in).</p>
+
+<p>Separate modules each implement the <a href="https://github.com/emaadmanzoor/igor-rest-api/blob/master/api/users.py">user management endpoints</a>,
+<a href="https://github.com/emaadmanzoor/igor-rest-api/blob/master/api/machines.py">machine management endpoints</a> and <a href="https://github.com/emaadmanzoor/igor-rest-api/blob/master/api/permissions.py">permissions endpoints</a>. The
+<a href="https://github.com/emaadmanzoor/igor-rest-api/blob/master/api/routes.py">routes module</a> collects these and the IPMI operation endpoints into a list
+and registers them with the application. Having this module separate helps us
+look at a map of all the available endpoints. The endpoint list also helps us
+in testing, as we will see in an upcoming section.</p>
+
+<h2 id="ipmi-operations">IPMI Operations</h2>
+
+<p>IPMI operations are implemented via my <a href="https://github.com/emaadmanzoor/pyipmi/">fork of pyipmi</a>. pyipmi wraps calls
+to <a href="http://sourceforge.net/projects/ipmitool/">ipmitool</a> and <a href="http://www.gnu.org/software/freeipmi/">freeipmi</a>, parses their response and returns them as
+Python data structures.</p>
+
+<p>Each command is called within the methods of a resource, which is a subclass of
+<code class="highlighter-rouge">IPMIResource</code>. <code class="highlighter-rouge">IPMIResource</code> obtains the target hostname that is set by the
+authorization decorator and creates the necessary pyipmi objects to access that
+machine. Each command is called via a <a href="https://github.com/emaadmanzoor/igor-rest-api/blob/master/api/utils.py#L7-L12">wrapper</a> that makes the call,
+obtains the response and returns a HTTP 400 (bad request) if the command fails,
+otherwise passes through to the rest of the method body. Since most
+error-handling is delegated to ipmitool, the calls are thin and easily
+adaptable in case the underlying command changes. All the IPMI operation
+endpoints are implemented in a <a href="https://github.com/emaadmanzoor/igor-rest-api/blob/master/api/ipmi.py">single module</a>.</p>
+
+<p>Unfortunately, the company maintaining pyipmi <a href="http://arstechnica.com/information-technology/2013/12/arm-in-the-server-room-faces-a-set-back-as-calxeda-shuts-down/">shut down</a> and the project
+is now unmaintained. Nevertheless, it appears to be the most full-fledged
+Python-IPMI interface available right now. The IPMI <code class="highlighter-rouge">lan alert</code> <a href="https://github.com/emaadmanzoor/pyipmi/pull/1">command</a>,
+<code class="highlighter-rouge">sel delete</code> <a href="https://github.com/emaadmanzoor/pyipmi/pull/2">command</a> and <a href="https://github.com/emaadmanzoor/pyipmi/pull/3">sensor</a> commands were contributed back to
+pyipmi during the course of this work.</p>
+
+<h2 id="tests">Tests</h2>
+
+<p>Tests were implemented with <a href="https://nose.readthedocs.org/en/latest/">nose</a> as the test collector/runner,
+and <a href="http://flask.pocoo.org/docs/testing/">flask-testing</a> providing a nice abstraction over Python’s
+built-in <code class="highlighter-rouge">unittest</code> module that makes it convenient to test Flask applications.
+A <a href="https://github.com/jarus/flask-testing/pull/59">pull request</a> contributing optional test-failure messages was merged into
+flask-testing during the course of this work.</p>
+
+<p>Each test is set up by creating a new database instance with a single root user.
+The current bunch of tests consists of four modules: authentication tests, user
+management tests, machine management tests and permission tests.</p>
+
+<p>The <a href="https://github.com/emaadmanzoor/igor-rest-api/blob/master/tests/login_tests.py">authorization tests</a> take advantage of the resources list in the routes
+module described earlier. Each endpoint (except the root at /) is verified to be
+inaccessible without authentication. The <a href="https://github.com/emaadmanzoor/igor-rest-api/blob/master/tests/users_tests.py">user</a> and <a href="https://github.com/emaadmanzoor/igor-rest-api/blob/master/tests/machine_tests.py">machine</a> management
+tests verify CRUD operations on the respective endpoints, in addition to
+additional cases such as adding users/machines that already exist. The
+<a href="https://github.com/emaadmanzoor/igor-rest-api/blob/master/tests/permission_tests.py">permission tests</a> verify the addition and removal of users-machines
+relationships via the API endpoints.</p>
+
+<h2 id="future">Future</h2>
+
+<p>The most important extension to this work is closely tied to the development of
+one of the following pure Python implementations of the IPMI protocol:
+<a href="https://github.com/xcat-org/python-ipmi">xcat python-ipmi</a>, <a href="https://github.com/kontron/python-ipmi">kontron python-ipmi</a> or <a href="https://github.com/stackforge/pyghmi">pyghmi</a>. Once these
+libraries reasonably cover the complete IPMI protocol, they can be integrated
+into the Igor REST API. Both the API and CLI architecture would remain the same
+with this change.</p>
+
+<p>This can be followed by a good implementation of serial-on-LAN (SOL), which was
+<a href="https://github.com/emaadmanzoor/igor-rest-api/blob/master/docs/SOL.md">planned</a> for this project but abandoned due to poor fit with the REST
+protocol, since implementing SOL over REST would require maintaining server-side
+state for each user. The SOL is asynchronous and full-duplex by nature, and
+per-user queues could (not very elegantly) replicate this functionality over
+REST. The proposed architecture was as depicted below:</p>
+
+<p><img src="https://docs.google.com/drawings/d/1YiY9cBmCVGKoQG-12gxCHKqPBhJaLBg977aIyM7tgYs/pub?w=804&amp;h=627" alt="Igor SOL Design" title="Igor SOL Design" /></p>
+
+<p><em><a href="https://docs.google.com/drawings/d/1YiY9cBmCVGKoQG-12gxCHKqPBhJaLBg977aIyM7tgYs/edit?usp=sharing">Diagram source</a></em></p>
+
+<p>This may be better thought about after having the pure Python IPMI protocol
+implementation.</p>
+
+<p>Further extensions are the tasks I could not complete due to the unplanned work
+on patching pyipmi: the ncurses TUI, the Flask web GUI and the Android
+application. These client interfaces would further improve the IPMI
+accessibility of OSL machines, and also test the robustness of the REST API.</p>
+
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8>
+        <meta name=viewport content="width=device-width, initial-scale=1.0">
+        <meta name=description content="Blog of Emaad Ahmed Manzoor">
+        
+        <title>
+          
+            Scheduling Broadcasts in a Network of Timelines | 
+          
+          Emaad Ahmed Manzoor
+        </title>
+
+        <script src=http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML.js type=text/javascript></script>
+        <script>
+            MathJax.Hub.Config({
+              "HTML-CSS": {
+                linebreaks: {
+                    automatic: true,
+                    width: "70% container"
+                },
+                styles: {
+                    ".MathJax .math": {
+                        //"border": "1px solid #ccc",
+                        //"margin": "0.1em 0",
+                        //"padding": "0.3em",
+                        //"vertical-align": "middle"
+                    },
+                    ".MathJax_Display .math": {
+                        "border": "none",
+                        "padding": "0",
+                    }
+                },
+                scale: 100
+              }
+            });
+        </script>
+                
+        <link rel=stylesheet type=text/css href=/css/pure-min.css>
+        <link rel=stylesheet type=text/css href=/css/github.css>
+        <link rel=stylesheet type=text/css href=/css/styles.css>
+        <link rel=stylesheet type=text/css href=/css/font-awesome/css/font-awesome.min.css>
+        
+        <link rel=alternate type=application/rss+xml title="RSS feed for eyeshalfclosed.com" href="/feed.xml">
+    </head>
+    <body>
+        <div class="container pure-g-r">
+            <div class=pure-u-1-4>
+                <div class=author-info>
+    <img src="/images/author-image.jpeg" class=author-image />
+    <h1 class=author-name><a href=/>Emaad Ahmed Manzoor</a></h1>
+    <div class=nav>
+        <a href="https://github.com/emaadmanzoor"><i class=icon-github-alt></i></a>
+        <a href="https://twitter.com/emaadmanzoor"><i class=icon-twitter></i></a>
+        <a href="https://linkedin.com/in/emaadmanzoor"><i class=icon-linkedin></a></i>
+        <a href="http://feeds.feedburner.com/eyeshalfclosed"><i class=icon-rss></i></a>
+    </div>
+    <div class=home-nav>
+        <ul>
+            <li><a href="https://scholar.google.com/citations?user=TcMyxM0AAAAJ">Scholar</a></li>
+            <li><a href="/blog/">Blog</a>
+                &nbsp;|&nbsp;
+                <a href="/jrnl/">jrnl</a></li>
+            <li><a href="/projects/">Projects</a>
+                &nbsp;|&nbsp;
+                <a href="https://github.com/emaadmanzoor">Code</a>
+            </li>
+            <li><a href="/talks/">Talks</a></li>
+            <li><a href="/service/">Service</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li>
+                <a class=resume-link href="/cv.pdf">CV</a><br/>
+                <span class=resume-update>(Updated Mar. '19)</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+            </div>
+            <div class=pure-u-3-4>
+                <div class=right-column>
+                    <div class=page>
+    
+    <h1 class=title-large>Scheduling Broadcasts in a Network of Timelines</h1>
+    
+    <div class=content>
+        <ul>
+  <li><a href="https://arxiv.org/abs/1610.06052">Paper</a></li>
+  <li><a href="http://repository.kaust.edu.sa/kaust/handle/10754/552703">Thesis</a></li>
+  <li><a href="https://speakerdeck.com/emaadmanzoor/scheduling-broadcasts-in-a-network-of-timelines">Slides</a></li>
+  <li><a href="https://www.youtube.com/watch?v=6Z4DCCwR1UA">Video</a></li>
+</ul>
+
+<h2 id="data">Data</h2>
+
+<p>We use the <a href="http://linshuyang.com/research/PDC/">Twitter-Friends</a> dataset described
+in the following paper:</p>
+
+<blockquote>
+  <p>Steering Information Diffusion Dynamically against User Attention Limitation.
+Shuyang Lin, Qingbo Hu, Fengjiao Wang, Philip S. Yu. ICDM ’14.</p>
+</blockquote>
+
+<p>We provide Python <a href="https://wiki.python.org/moin/UsingPickle">pickles</a>
+of this data for convenient reuse in code:</p>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">all_links.p</code> (<a href="/scheduling/all_tweets.p">Download</a>): A list of tuples of user ID’s,
+one for each link in the network, of the form <em>(a, b)</em> where <em>b</em> follows <em>a</em>.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">all_tweets.p</code> (<a href="/scheduling/all_tweets.p">Download</a>): A list of tuples, one for each tweet,
+containing following information in order:</p>
+
+    <ol>
+      <li>Tweet creator ID.</li>
+      <li>Tweet creation time (in milliseconds since the epoch).</li>
+      <li>Retweeted user ID (-1 if not a retweet).</li>
+      <li>Replied-to user ID (-1 if not a user-reply).</li>
+      <li>The tweet ID.</li>
+      <li>Retweeted tweet ID (-1 if not a retweet).</li>
+      <li>Replied-to tweet ID (-1 if not a tweet-reply)</li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="attention-potential">Attention Potential</h2>
+
+<p><a href="https://gist.github.com/emaadmanzoor/a1e6632f905fa6bcbbcb">Annotated code</a>.</p>
+
+<p>Attention potential is a directed function <em>ap(a,b)</em>, estimating the attention that follower <em>b</em>
+gives producer <em>a</em>. Likewise, reactions are also directed <em>reactions(a,b)</em>, measuring the number
+of retweets to and replies of <em>a</em>’s tweets by <em>b</em>. The code linked above evaluates the correlation
+between attention and reactions in the Twitter dataset.</p>
+
+<h2 id="monotony-aversion">Monotony Aversion</h2>
+
+<p><a href="https://gist.github.com/emaadmanzoor/55f2b1c72764a2ba9bfd">Annotated code</a>.</p>
+
+<p>The code linked above computes statistics of author-occurence clusters.
+For each cluster size, it reports the following:</p>
+
+<ul>
+  <li>The number of clusters of this size.</li>
+  <li>The number of tweets arising from clusters of this size.</li>
+  <li>The number of tweets reacted to in clusters of this size.</li>
+  <li>The number of clusters of this size containing at least one reaction.</li>
+</ul>
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

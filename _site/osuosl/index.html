@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8>
+        <meta name=viewport content="width=device-width, initial-scale=1.0">
+        <meta name=description content="Blog of Emaad Ahmed Manzoor">
+        
+        <title>
+          
+            IPMI Management Console | 
+          
+          Emaad Ahmed Manzoor
+        </title>
+
+        <script src=http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML.js type=text/javascript></script>
+        <script>
+            MathJax.Hub.Config({
+              "HTML-CSS": {
+                linebreaks: {
+                    automatic: true,
+                    width: "70% container"
+                },
+                styles: {
+                    ".MathJax .math": {
+                        //"border": "1px solid #ccc",
+                        //"margin": "0.1em 0",
+                        //"padding": "0.3em",
+                        //"vertical-align": "middle"
+                    },
+                    ".MathJax_Display .math": {
+                        "border": "none",
+                        "padding": "0",
+                    }
+                },
+                scale: 100
+              }
+            });
+        </script>
+                
+        <link rel=stylesheet type=text/css href=/css/pure-min.css>
+        <link rel=stylesheet type=text/css href=/css/github.css>
+        <link rel=stylesheet type=text/css href=/css/styles.css>
+        <link rel=stylesheet type=text/css href=/css/font-awesome/css/font-awesome.min.css>
+        
+        <link rel=alternate type=application/rss+xml title="RSS feed for eyeshalfclosed.com" href="/feed.xml">
+    </head>
+    <body>
+        <div class="container pure-g-r">
+            <div class=pure-u-1-4>
+                <div class=author-info>
+    <img src="/images/author-image.jpeg" class=author-image />
+    <h1 class=author-name><a href=/>Emaad Ahmed Manzoor</a></h1>
+    <div class=nav>
+        <a href="https://github.com/emaadmanzoor"><i class=icon-github-alt></i></a>
+        <a href="https://twitter.com/emaadmanzoor"><i class=icon-twitter></i></a>
+        <a href="https://linkedin.com/in/emaadmanzoor"><i class=icon-linkedin></a></i>
+        <a href="http://feeds.feedburner.com/eyeshalfclosed"><i class=icon-rss></i></a>
+    </div>
+    <div class=home-nav>
+        <ul>
+            <li><a href="https://scholar.google.com/citations?user=TcMyxM0AAAAJ">Scholar</a></li>
+            <li><a href="/blog/">Blog</a>
+                &nbsp;|&nbsp;
+                <a href="/jrnl/">jrnl</a></li>
+            <li><a href="/projects/">Projects</a>
+                &nbsp;|&nbsp;
+                <a href="https://github.com/emaadmanzoor">Code</a>
+            </li>
+            <li><a href="/talks/">Talks</a></li>
+            <li><a href="/service/">Service</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li>
+                <a class=resume-link href="/cv.pdf">CV</a><br/>
+                <span class=resume-update>(Updated Mar. '19)</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+            </div>
+            <div class=pure-u-3-4>
+                <div class=right-column>
+                    <div class=page>
+    
+    <h1 class=title-large>IPMI Management Console</h1>
+    
+    <div class=content>
+        <p>The following page serves as a wiki for my GSoC ‘14 project with the OSU OSL.</p>
+
+<h3 id="some-useful-links">Some useful links</h3>
+
+<ul>
+  <li>Code and version history for this page can be found <a href="https://github.com/emaadmanzoor/blog/blob/gh-pages/osuosl.md">here</a>.</li>
+  <li>You can find my proposal <a href="http://www.google-melange.com/gsoc/proposal/review/student/google/gsoc2014/emaadmanzoor/5724160613416960">here</a>.</li>
+  <li>Repository for the code under the OSU OSL <a href="https://github.com/osuosl">Github organization</a>. <code class="highlighter-rouge">TODO</code>
+    <ul>
+      <li>Until we move them under the OSUOSL organization, the repositories will be here: <a href="https://github.com/emaadmanzoor/igor-rest-api">igor-rest-api</a>, <a href="https://github.com/emaadmanzoor/igor-cli">igor-cli</a></li>
+    </ul>
+  </li>
+  <li>OSL IPMI test machine. <code class="highlighter-rouge">TODO</code></li>
+</ul>
+
+<h3 id="current-tasks">Current Tasks</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">TODO</code> Get access to an IPMI-enabled machine
+    <ul>
+      <li><em>Hypervisors supporting IPMI?</em> Until I get access to a physical machine,
+I supposed having a VM on a hypervisor that implements
+a virtual IPMI interface would be useful, but neither KVM/QEMU or Virtualbox support this.</li>
+    </ul>
+  </li>
+  <li>Discuss initial REST API and CLI design, REST service hosting
+    <ul>
+      <li>An initial implementation is available <a href="https://github.com/emaadmanzoor/igor-rest-api">here</a>.</li>
+    </ul>
+  </li>
+  <li>Implement the <code class="highlighter-rouge">login</code> and <code class="highlighter-rouge">power</code> REST endpoints and CLI commands <code class="highlighter-rouge">TODO</code>
+    <ul>
+      <li>An implementation will be available soon <a href="https://github.com/emaadmanzoor/igor-rest-cli">here</a>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="design">Design</h2>
+
+<p>The standard CLI for IPMI-enabled machines is <a href="http://sourceforge.net/projects/ipmitool/">ipmitool</a>. Since we
+expect access from devices that may not have <code class="highlighter-rouge">ipmitool</code> available (eg. mobile phones), it makes sense to provide
+a universal REST API that is served from an OSL machine.</p>
+
+<h3 id="rest-api">REST API</h3>
+
+<p>In the REST paradigm, interactions are with <em>resources</em> via HTTP <em>verbs</em>. In our case, resources could be
+machines, machine devices/logs exposed by IPMI and users. The verbs are HTTP <em>GET</em>, <em>PUT</em>, <em>POST</em> etc.
+that define different interactions with these resources.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">/login/</code>: Accepts a username/password combination, issues an auth token on success. All future
+IPMI requests reuse this auth token.</li>
+  <li><code class="highlighter-rouge">/power/</code>: Powers on, off or cycle the machine. This wraps the <code class="highlighter-rouge">ipmitool power status|on|off|cycle|reset</code>
+commands.</li>
+  <li><code class="highlighter-rouge">/console/</code>: Returns a persistent connection streaming the output of the SOL console. This wraps
+the <code class="highlighter-rouge">ipmitool sol activate|deactivate</code> commands.</li>
+  <li><code class="highlighter-rouge">/sensors/</code>: Provides sensor readings. This wraps the <code class="highlighter-rouge">ipmitool sdr</code> commands.</li>
+  <li><code class="highlighter-rouge">/log/</code>: Returns the sensor event log. This wraps the <code class="highlighter-rouge">ipmitool sel</code> commands.</li>
+</ul>
+
+<h3 id="cli">CLI</h3>
+
+<p>I plan for the CLI to make calls to the REST API, retreive the JSON response and format the output
+in a suitable way for the screen. The CLI commands will look like the following:</p>
+
+<figure class="highlight">
+  <pre><code class="language-bash" data-lang="bash">igor login
+igor power <span class="nt">-h</span> osl0[1-6] status|on|off|cycle|reset
+igor console
+igor sensors
+igor log</code></pre>
+</figure>
+
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

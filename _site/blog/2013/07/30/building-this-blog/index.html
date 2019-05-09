@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8>
+        <meta name=viewport content="width=device-width, initial-scale=1.0">
+        <meta name=description content="Blog of Emaad Ahmed Manzoor">
+        
+        <title>
+          
+            Building This Blog | 
+          
+          Emaad Ahmed Manzoor
+        </title>
+
+        <script src=http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML.js type=text/javascript></script>
+        <script>
+            MathJax.Hub.Config({
+              "HTML-CSS": {
+                linebreaks: {
+                    automatic: true,
+                    width: "70% container"
+                },
+                styles: {
+                    ".MathJax .math": {
+                        //"border": "1px solid #ccc",
+                        //"margin": "0.1em 0",
+                        //"padding": "0.3em",
+                        //"vertical-align": "middle"
+                    },
+                    ".MathJax_Display .math": {
+                        "border": "none",
+                        "padding": "0",
+                    }
+                },
+                scale: 100
+              }
+            });
+        </script>
+                
+        <link rel=stylesheet type=text/css href=/css/pure-min.css>
+        <link rel=stylesheet type=text/css href=/css/github.css>
+        <link rel=stylesheet type=text/css href=/css/styles.css>
+        <link rel=stylesheet type=text/css href=/css/font-awesome/css/font-awesome.min.css>
+        
+        <link rel=alternate type=application/rss+xml title="RSS feed for eyeshalfclosed.com" href="/feed.xml">
+    </head>
+    <body>
+        <div class="container pure-g-r">
+            <div class=pure-u-1-4>
+                <div class=author-info>
+    <img src="/images/author-image.jpeg" class=author-image />
+    <h1 class=author-name><a href=/>Emaad Ahmed Manzoor</a></h1>
+    <div class=nav>
+        <a href="https://github.com/emaadmanzoor"><i class=icon-github-alt></i></a>
+        <a href="https://twitter.com/emaadmanzoor"><i class=icon-twitter></i></a>
+        <a href="https://linkedin.com/in/emaadmanzoor"><i class=icon-linkedin></a></i>
+        <a href="http://feeds.feedburner.com/eyeshalfclosed"><i class=icon-rss></i></a>
+    </div>
+    <div class=home-nav>
+        <ul>
+            <li><a href="https://scholar.google.com/citations?user=TcMyxM0AAAAJ">Scholar</a></li>
+            <li><a href="/blog/">Blog</a>
+                &nbsp;|&nbsp;
+                <a href="/jrnl/">jrnl</a></li>
+            <li><a href="/projects/">Projects</a>
+                &nbsp;|&nbsp;
+                <a href="https://github.com/emaadmanzoor">Code</a>
+            </li>
+            <li><a href="/talks/">Talks</a></li>
+            <li><a href="/service/">Service</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li>
+                <a class=resume-link href="/cv.pdf">CV</a><br/>
+                <span class=resume-update>(Updated Mar. '19)</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+            </div>
+            <div class=pure-u-3-4>
+                <div class=right-column>
+                    <div class=post>
+    
+    <ul class=post-meta>
+    
+    <li class=publish-time><i class=icon-calendar></i>July 30, 2013</li>
+    
+        <li>&middot;</li>
+        <li><a href="/tags/#blogging-ref">#blogging</a></li>
+    
+</ul>
+
+    <h1 class=title-large>Building This Blog</h1>
+    <div class=content>
+        <p>This is the third iteration of my blog. This is a meta post on how it was constructed and why certain choices were made.</p>
+
+<h2 id="powered-by">Powered By</h2>
+
+<p>Prior to this, I tried to adopt the following blogging apparatus:</p>
+
+<ul>
+  <li><a href="http://wordpress.com/">Wordpress.com</a>: You can still see my <a href="http://halfclosed.wordpress.com/">old blog</a>. I hated the web editor. I had to often use raw HTML while composing posts to get certain styles right (eg. I wanted my images with a black border, sometimes floated left, etc.). Code formatting was also an issue with the limited set of languages supported. Further, a free Wordpress.com blog disallows editing the CSS.</li>
+  <li><a href="http://nanoc.stoneship.org">nanoc</a>: My nanoc blog still <a href="http://emaadmanzoor.github.io/eyeshalfclosed/blog/">exists</a> along with its <a href="https://github.com/emaadmanzoor/eyeshalfclosed">code</a>. nanoc is a very well-documented, extremely powerful static site generator. I struggled with its power for a while and resented needing access to an entire Linux development environment just to publish a post.</li>
+</ul>
+
+<p>Jekyll strikes the middle ground. Jekyll sites can be built automatically by Github pages, so I can use the Github UI (Zen Mode FTW!) or <a href="http://prose.io">prose.io</a> to compose and commit posts. I no longer require access to a
+development machine; I can even do this on my phone!</p>
+
+<p>Jekyll is also extremely simple, and as a consequence, a lot more limited in ability than nanoc. This is magnified if you restrict yourself to automatic publishing via Github pages, where custom plugins are disallowed. I preferred
+this trade-off so I could remain minimal, both in my blog’s appearance and in the code that powers it.</p>
+
+<p>Another big plus for Jekyll is the sheer number of people using it to host blogs. These users communicate and contribute a lot more actively than nanoc’s, presumably due to the Jekyll code-base’s tiny learning curve. This is why you see projects like <a href="http://octopress.org">Octopress</a> and <a href="http://jekyllbootstrap.com">Jekyll Bootstrap</a> springing up, and a huge number of themes and plugins. When I started with nanoc, there was a single <a href="https://github.com/mgutz/nanoc3_blog">nanoc-starter</a> project that is still unmaintained; I had no giant shoulders to stand on.</p>
+
+<h2 id="design">Design</h2>
+
+<p>The theme this blog wears is hand-crafted; I found it way easier than adapting someone else’s theme, thought I did search a lot for something minimal in code and appearance that was also responsive.</p>
+
+<p>Some of the themes I considered before rolling my own are:</p>
+
+<ul>
+  <li><a href="http://mademistakes.com/articles/minimal-mistakes-jekyll-theme.html">Minimal Mistakes</a>: This is a beautiful theme by Michael Rose, but the code presented too great a learning curve.</li>
+  <li><a href="http://mademistakes.com/articles/so-simple-jekyll-theme.html">So Simple</a>: Another beautiful theme by Michael Rose, with the same problem as above.</li>
+  <li><a href="http://shashankmehta.in/archive/2012/greyshade.html">Greyshade</a>: A Medium-esque Octopress theme.</li>
+  <li><a href="http://zachholman.com/posts/left/">Left</a>: A clean, white Jekyll theme.</li>
+</ul>
+
+<p>The design has some key influencers:</p>
+
+<ul>
+  <li><a href="http://purecss.io/layouts/blog/">The PureCSS Blog Layout</a>: PureCSS also forms the backbone of this blog.</li>
+  <li><a href="http://medium.com">Medium.com</a>: Particularly their layout for an individual post.</li>
+  <li><a href="http://aaronmoodie.com/">Aaron Moodie’s Blog</a>: Follows a Tumble-log style, with different post types.</li>
+  <li><a href="http://mnmlist.com/">mnmlist</a>: An inspiration for life too.</li>
+</ul>
+
+<p>I also use icons from <a href="http://fortawesome.github.io/Font-Awesome/icons/">FontAwesome</a>, which I first stumbled upon on Zach Holman’s <a href="http://zachholman.com/posts/left/">Left</a> Jekyll theme.</p>
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

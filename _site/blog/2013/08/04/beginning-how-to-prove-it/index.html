@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8>
+        <meta name=viewport content="width=device-width, initial-scale=1.0">
+        <meta name=description content="Blog of Emaad Ahmed Manzoor">
+        
+        <title>
+          
+            Beginning How To Prove It | 
+          
+          Emaad Ahmed Manzoor
+        </title>
+
+        <script src=http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML.js type=text/javascript></script>
+        <script>
+            MathJax.Hub.Config({
+              "HTML-CSS": {
+                linebreaks: {
+                    automatic: true,
+                    width: "70% container"
+                },
+                styles: {
+                    ".MathJax .math": {
+                        //"border": "1px solid #ccc",
+                        //"margin": "0.1em 0",
+                        //"padding": "0.3em",
+                        //"vertical-align": "middle"
+                    },
+                    ".MathJax_Display .math": {
+                        "border": "none",
+                        "padding": "0",
+                    }
+                },
+                scale: 100
+              }
+            });
+        </script>
+                
+        <link rel=stylesheet type=text/css href=/css/pure-min.css>
+        <link rel=stylesheet type=text/css href=/css/github.css>
+        <link rel=stylesheet type=text/css href=/css/styles.css>
+        <link rel=stylesheet type=text/css href=/css/font-awesome/css/font-awesome.min.css>
+        
+        <link rel=alternate type=application/rss+xml title="RSS feed for eyeshalfclosed.com" href="/feed.xml">
+    </head>
+    <body>
+        <div class="container pure-g-r">
+            <div class=pure-u-1-4>
+                <div class=author-info>
+    <img src="/images/author-image.jpeg" class=author-image />
+    <h1 class=author-name><a href=/>Emaad Ahmed Manzoor</a></h1>
+    <div class=nav>
+        <a href="https://github.com/emaadmanzoor"><i class=icon-github-alt></i></a>
+        <a href="https://twitter.com/emaadmanzoor"><i class=icon-twitter></i></a>
+        <a href="https://linkedin.com/in/emaadmanzoor"><i class=icon-linkedin></a></i>
+        <a href="http://feeds.feedburner.com/eyeshalfclosed"><i class=icon-rss></i></a>
+    </div>
+    <div class=home-nav>
+        <ul>
+            <li><a href="https://scholar.google.com/citations?user=TcMyxM0AAAAJ">Scholar</a></li>
+            <li><a href="/blog/">Blog</a>
+                &nbsp;|&nbsp;
+                <a href="/jrnl/">jrnl</a></li>
+            <li><a href="/projects/">Projects</a>
+                &nbsp;|&nbsp;
+                <a href="https://github.com/emaadmanzoor">Code</a>
+            </li>
+            <li><a href="/talks/">Talks</a></li>
+            <li><a href="/service/">Service</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li>
+                <a class=resume-link href="/cv.pdf">CV</a><br/>
+                <span class=resume-update>(Updated Mar. '19)</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+            </div>
+            <div class=pure-u-3-4>
+                <div class=right-column>
+                    <div class=post>
+    
+    <ul class=post-meta>
+    
+    <li class=publish-time><i class=icon-calendar></i>August 04, 2013</li>
+    
+        <li>&middot;</li>
+        <li><a href="/tags/#how-to-prove-it-ref">#how-to-prove-it</a></li>
+    
+</ul>
+
+    <h1 class=title-large>Beginning How To Prove It</h1>
+    <div class=content>
+        <p>I just finished working through the introduction of <a href="http://www.cambridge.org/us/academic/subjects/mathematics/logic-categories-and-sets/how-prove-it-structured-approach-2nd-edition">How To Prove It</a>. The book presents a structured approach to reading and writing proofs, that is analogous to how we compose elements like <code class="highlighter-rouge">if-then</code> statements and <code class="highlighter-rouge">do-while</code> loops to write computer programs. I’m personally finding the book very promising, and highly recommend working through the introduction to get a taste of the kind of mental process this provokes.</p>
+
+<p><em>Aside</em>: I think the books that make the most impact on me are the ones with carefully designed exercises that really test how thorough you believe you are. This also goes to show that I really rely on exercises to force deep reading; another <code class="highlighter-rouge">FIXME</code> item for my flawed reading habits.</p>
+
+<p>It looks like the only solutions and discussions on this book are over at <a href="http://technotes-himanshu.blogspot.in/search/label/htpi">Himanshu Gupta’s blog</a>; I’ve found some real gems in the comment discussions there, so they’re now mandatory post-exercise readings for me.</p>
+
+<h2 id="notes">Notes</h2>
+
+<p>Below are my notes while working through the introductory exercise:</p>
+
+<h3 id="question-1">Question 1</h3>
+
+<p>This questions builds on conjecture 2,</p>
+
+<blockquote>
+  <p>If n is not prime, then <script type="math/tex">2^n - 1</script> is not prime.</p>
+</blockquote>
+
+<p>and its corresponding proof, which shows us how to construct the factors <script type="math/tex">x</script> and <script type="math/tex">y</script> of <script type="math/tex">2^n - 1</script> from the factors <script type="math/tex">a</script> and <script type="math/tex">b</script> of <script type="math/tex">n</script>.</p>
+
+<p><em>a. Factor <script type="math/tex">2^{15} - 1 = 32,767</script> into a product of two smaller positive integers.</em></p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+   &n = 15 \implies a = 5, b = 3\\
+   \\
+   &x = 2^b - 1 = 31\\
+   &y = 1 + 2^b + 2^{2b} = 1057\\
+   \\
+   &2^{15} - 1 = 31\times1057
+\end{align*} %]]></script>
+
+<p><em>b. Find an integer <script type="math/tex">x</script> such that <script type="math/tex">% <![CDATA[
+1 < x < 2^{32767} - 1 %]]></script> and <script type="math/tex">x</script> divides <script type="math/tex">2^{32767} - 1</script>.</em></p>
+
+<p>This is equivalent to stating that <script type="math/tex">2^{32767} - 1 = xy</script>, where <script type="math/tex">% <![CDATA[
+1 < y < 2^{32767} - 1 %]]></script>. Let <script type="math/tex">2^{32767} - 1 = 2^n - 1</script>. Then,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+  n &= 32767\\
+    &= 1057\times31\\
+    &= a \times b\\
+  \\
+  \implies a &= 1057\\
+           b &= 31\\
+  \\
+  2^{32767} - 1
+    &= x \times y\\
+    &= (2^b - 1)(1 + 2^b + 2^2b + ...)\\
+  \\
+  \implies x &= 2^b - 1\\
+             &= 2^{31} - 1\\
+             &= 2147483647
+\end{align*} %]]></script>
+
+<h3 id="question-2">Question 2</h3>
+
+<p><em>Make some conjecture about the values of <script type="math/tex">n</script> for which <script type="math/tex">3^n - 1</script> is prime or <script type="math/tex">3^n - 2^n</script> is prime.</em></p>
+
+<p>Let’s make a table.</p>
+
+<div class="table-wrapper">
+
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align: left">n</th>
+        <th style="text-align: left"><script type="math/tex">3^n - 1</script></th>
+        <th style="text-align: left"><script type="math/tex">3^n - 2^n</script></th>
+        <th style="text-align: center">n prime?</th>
+        <th style="text-align: center"><script type="math/tex">3^n -1</script> prime?</th>
+        <th style="text-align: center"><script type="math/tex">3^n - 2^n</script> prime?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left">1</td>
+        <td style="text-align: left">2</td>
+        <td style="text-align: left">1</td>
+        <td style="text-align: center">N</td>
+        <td style="text-align: center">Y</td>
+        <td style="text-align: center">N</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">2</td>
+        <td style="text-align: left">8</td>
+        <td style="text-align: left">5</td>
+        <td style="text-align: center">Y</td>
+        <td style="text-align: center">N</td>
+        <td style="text-align: center">Y</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">3</td>
+        <td style="text-align: left">26</td>
+        <td style="text-align: left">19</td>
+        <td style="text-align: center">Y</td>
+        <td style="text-align: center">N</td>
+        <td style="text-align: center">Y</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">4</td>
+        <td style="text-align: left">80</td>
+        <td style="text-align: left">65</td>
+        <td style="text-align: center">N</td>
+        <td style="text-align: center">N</td>
+        <td style="text-align: center">N</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">5</td>
+        <td style="text-align: left">242</td>
+        <td style="text-align: left">211</td>
+        <td style="text-align: center">Y</td>
+        <td style="text-align: center">N</td>
+        <td style="text-align: center">Y</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">6</td>
+        <td style="text-align: left">728</td>
+        <td style="text-align: left">665</td>
+        <td style="text-align: center">N</td>
+        <td style="text-align: center">N</td>
+        <td style="text-align: center">N</td>
+      </tr>
+      <tr>
+        <td style="text-align: left">7</td>
+        <td style="text-align: left">2186</td>
+        <td style="text-align: left">2059</td>
+        <td style="text-align: center">Y</td>
+        <td style="text-align: center">N</td>
+        <td style="text-align: center">Y</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<p>Conjectures:</p>
+
+<ol>
+  <li>If <script type="math/tex">n</script> is prime, then <script type="math/tex">3^n - 2^n</script> is prime.</li>
+  <li>If <script type="math/tex">n</script> is not prime, then <script type="math/tex">3^n - 2^n</script> is not prime.</li>
+  <li>If <script type="math/tex">n > 1</script>, then <script type="math/tex">3^n -1</script> is not prime.</li>
+</ol>
+
+<h3 id="question-3">Question 3</h3>
+
+<p><em>The proof of theorem 3 gives a method of finding a prime number different from any in a given list of prime numbers</em></p>
+
+<ul>
+  <li><em>Use this method to find a prime number different from 2, 3, 5 and 7.</em></li>
+  <li><em>Use this method to find a prime number different from 2, 5 and 11.</em></li>
+</ul>
+
+<p>Theorem 3 proves that there is an infinite number of primes using 2 cases.</p>
+
+<p>Given a list of primes <script type="math/tex">p_{1}, ..., p_{n}</script>, if <script type="math/tex">m = p_{1} \times p_{2} \times ... \times p_{n} + 1</script>, either:</p>
+
+<ul>
+  <li><script type="math/tex">m</script> is prime, and is hence not in the finite list <script type="math/tex">p_{1}, ... p_{n}</script>, or</li>
+  <li><script type="math/tex">m</script> is a product of primes <script type="math/tex">p</script> and <script type="math/tex">q</script>. Since <script type="math/tex">m</script> is not divisible by <script type="math/tex">p_{1}, p_{2}, ..., p_{n}</script>, <script type="math/tex">p</script> or <script type="math/tex">q</script> are not in the finite list <script type="math/tex">p_{1}, ..., p_{n}</script>.</li>
+</ul>
+
+<p>So we have 2 ways of finding a prime that is not in the given list of primes:</p>
+
+<ul>
+  <li><script type="math/tex">m = p_{1} \times p_{2} \times ... \times p_{n} + 1</script>, and <script type="math/tex">m</script> is prime, so it is the prime we need.</li>
+  <li><script type="math/tex">m = p \times q</script>, and <script type="math/tex">m</script> is not prime, so <script type="math/tex">p</script> and <script type="math/tex">q</script> are the primes we need.</li>
+</ul>
+
+<p>Using this, we have:</p>
+
+<ul>
+  <li><script type="math/tex">2 \times 3 \times 5 \times 7 + 1 = 211</script>, 211 is a prime not in the list.</li>
+  <li><script type="math/tex">2 \times 5 \times 11 + 1 = 111 = 3 \times 37</script>, 3 and 37 are primes not in the list.</li>
+</ul>
+
+<p>The comments in <a href="http://www.cambridge.org/us/academic/subjects/mathematics/logic-categories-and-sets/how-prove-it-structured-approach-2nd-edition">Himanshu’s blog</a> brought forth an interesting related conjecture; if <script type="math/tex">p_{1}, p_{2}, ...</script> are primes, then is <script type="math/tex">p_{1} \times p_{2} \times ... \times p_{n} + 1</script> always prime?</p>
+
+<p>The numbers of the form <script type="math/tex">p_{1} \times p_{2} \times ... \times p_{n} + 1</script> are called <em>Euclid numbers</em>. The conjecture is false, as seen in the counter-example of the <a href="http://en.wikipedia.org/wiki/Euclid_number">first composite Euclid number</a>.</p>
+
+<h3 id="question-4">Question 4</h3>
+
+<p><em>Find 5 consecutive integers that are not prime.</em></p>
+
+<p>This is a direct application of the theorem 4.</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+  n &= 5\\
+  x &= (5 + 1)! + 2\\
+    &= 6! + 2\\
+    &= 722
+\end{align*} %]]></script>
+
+<p>Required sequence: 722, 723, 724, 725, 726</p>
+
+<h3 id="question-5">Question 5</h3>
+
+<p><em>Use the table in figure 1 and the discussions on p.5 to find two more perfect numbers.</em></p>
+
+<p>This is a direct application of the theorem proven by Euler,</p>
+
+<blockquote>
+  <p>If <script type="math/tex">2^n - 1</script> is prime, then <script type="math/tex">2^{n-1} \times (2^{n} - 1)</script> is perfect.</p>
+</blockquote>
+
+<p>Using this theorem, we have the following:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+  n &= 5\\
+\implies 2^4 &\times (2^5 - 1)\\
+    &= 16 \times 31\\
+    &= 496\\
+    &= 1 + 2 + 4 + 8 + 16 + 31 + 62 + 124 + 248\\
+  \\
+  n &= 7\\
+\implies 2^6 &\times (2^7 - 1) = 8128
+\end{align*} %]]></script>
+
+<h3 id="question-6">Question 6</h3>
+
+<p><em>The sequence 3, 5, 7 is a list of three prime numbers such that each pair of adjacent numbers in the list differ by 2. Are there any more such “triplet primes”?</em></p>
+
+<p>Such a triplet can only occur among a triplet of odd numbers (since 2 is the only even prime number).</p>
+
+<p>Among consecutive odd numbers, apart from 2, 3, 5 and 3, 5, 7, there is no such triplet. Every third odd number greater than 15 is a multiple of 3, so we can never get a sequence of 3 odd numbers such that they are all prime; at least one of them will have 3 as a factor.</p>
+
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

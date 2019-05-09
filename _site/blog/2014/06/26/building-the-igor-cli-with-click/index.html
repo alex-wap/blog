@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8>
+        <meta name=viewport content="width=device-width, initial-scale=1.0">
+        <meta name=description content="Blog of Emaad Ahmed Manzoor">
+        
+        <title>
+          
+            Building the Igor CLI with Click | 
+          
+          Emaad Ahmed Manzoor
+        </title>
+
+        <script src=http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML.js type=text/javascript></script>
+        <script>
+            MathJax.Hub.Config({
+              "HTML-CSS": {
+                linebreaks: {
+                    automatic: true,
+                    width: "70% container"
+                },
+                styles: {
+                    ".MathJax .math": {
+                        //"border": "1px solid #ccc",
+                        //"margin": "0.1em 0",
+                        //"padding": "0.3em",
+                        //"vertical-align": "middle"
+                    },
+                    ".MathJax_Display .math": {
+                        "border": "none",
+                        "padding": "0",
+                    }
+                },
+                scale: 100
+              }
+            });
+        </script>
+                
+        <link rel=stylesheet type=text/css href=/css/pure-min.css>
+        <link rel=stylesheet type=text/css href=/css/github.css>
+        <link rel=stylesheet type=text/css href=/css/styles.css>
+        <link rel=stylesheet type=text/css href=/css/font-awesome/css/font-awesome.min.css>
+        
+        <link rel=alternate type=application/rss+xml title="RSS feed for eyeshalfclosed.com" href="/feed.xml">
+    </head>
+    <body>
+        <div class="container pure-g-r">
+            <div class=pure-u-1-4>
+                <div class=author-info>
+    <img src="/images/author-image.jpeg" class=author-image />
+    <h1 class=author-name><a href=/>Emaad Ahmed Manzoor</a></h1>
+    <div class=nav>
+        <a href="https://github.com/emaadmanzoor"><i class=icon-github-alt></i></a>
+        <a href="https://twitter.com/emaadmanzoor"><i class=icon-twitter></i></a>
+        <a href="https://linkedin.com/in/emaadmanzoor"><i class=icon-linkedin></a></i>
+        <a href="http://feeds.feedburner.com/eyeshalfclosed"><i class=icon-rss></i></a>
+    </div>
+    <div class=home-nav>
+        <ul>
+            <li><a href="https://scholar.google.com/citations?user=TcMyxM0AAAAJ">Scholar</a></li>
+            <li><a href="/blog/">Blog</a>
+                &nbsp;|&nbsp;
+                <a href="/jrnl/">jrnl</a></li>
+            <li><a href="/projects/">Projects</a>
+                &nbsp;|&nbsp;
+                <a href="https://github.com/emaadmanzoor">Code</a>
+            </li>
+            <li><a href="/talks/">Talks</a></li>
+            <li><a href="/service/">Service</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li>
+                <a class=resume-link href="/cv.pdf">CV</a><br/>
+                <span class=resume-update>(Updated Mar. '19)</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+            </div>
+            <div class=pure-u-3-4>
+                <div class=right-column>
+                    <div class=post>
+    
+    <ul class=post-meta>
+    
+    <li class=publish-time><i class=icon-calendar></i>June 26, 2014</li>
+    
+        <li>&middot;</li>
+        <li><a href="/tags/#gsoc2014-ref">#gsoc2014</a></li>
+    
+</ul>
+
+    <h1 class=title-large>Building the Igor CLI with Click</h1>
+    <div class=content>
+        <p>This summer, I am building an <a href="http://en.wikipedia.org/wiki/Intelligent_Platform_Management_Interface">IPMI</a> <a href="https://www.google-melange.com/gsoc/project/details/google/gsoc2014/emaadmanzoor/5693417237512192">management console</a> for the <a href="http://osuosl.org/">OSUOSL</a>. IPMI
+is the interface implemented by special hardware that lets you command a machine over a network
+as long as it is plugged in, even if the machine is powered off or refuses to
+boot an OS. If you have ever had ops engineers rebooting a bricked datacenter server with a magic
+console, you have seen IPMI.</p>
+
+<p>There are some requirements to working with IPMI: you need to have commands such as <code class="highlighter-rouge">ipmitool</code>
+available on your OS, and you need to know the IPMI credentials for the machine you want to access.
+If your datacenter machine has many IPMI users, or if they would like access via smartphones and web
+browsers, you quickly hit some limitations. Sharing the single IPMI username and
+password for the machine with all your users is a bad idea. Additionally, <code class="highlighter-rouge">ipmitool</code>
+equivalents for mobile OS’s are few and brittle.</p>
+
+<p>I planned to address this with the following scheme: implement a REST API
+that calls <code class="highlighter-rouge">ipmitool</code> commands, and then have very thin CLI, web GUI and Android clients that 
+consume this REST API. These thin clients interface with the REST API to manage users, machines and
+user-machine permissions in addition to actually performing the IPMI operations.</p>
+
+<p>Here I discuss the CLI design and implementation with a recent Python CLI framework called
+<a href="http://click.pocoo.org/">Click</a>, by <a href="http://lucumr.pocoo.org/">Armin Ronacher</a> of <a href="http://flask.pocoo.org/">Flask</a>, <a href="http://werkzeug.pocoo.org/">Werkzeug</a> and <a href="http://pythonhosted.org/itsdangerous/">itsdangerous</a> fame.
+While it may seem like a natural choice once you are done reading this post, note that I had
+to throw away a bunch of code after a false start with a different but way more popular
+CLI framework. Before I get into that, let us look at some of the goals I had for the CLI.</p>
+
+<h2 id="hierarchical-commands">Hierarchical Commands</h2>
+
+<p>If you have used the <code class="highlighter-rouge">heroku</code> CLI, you already know what this means. Since a <a href="http://showterm.io/">termshow</a> is
+worth a thousand man-pages, here is one below:</p>
+
+<div class="frame">
+  <iframe src="http://showterm.io/b39f439e874d0eae8e9ee" scrolling="no" frameborder="0"></iframe>
+</div>
+
+<p>The workflow above shows a new Igor user who wants to view the available machines. She knows
+nothing about Igor, and begins by typing in the command itself. She then navigates to the <code class="highlighter-rouge">machines</code>
+command and finds the <code class="highlighter-rouge">list</code> subcommand, and is then directed towards authorizing herself with the
+<code class="highlighter-rouge">auth</code> command and finally viewing the list of machines.</p>
+
+<p>This demonstrates some important features that I wanted Igor to have.</p>
+
+<p><strong>Explorability.</strong> Nobody likes reading a monochrome wall of text that is the typical manpage.
+A sensible, simple hierarchy with up-to-date documentation and helpful error messages is
+enough for the average user to navigate the average CLI, just like how you would explore a new website.
+An added bonus would be friendly and forgiving prompts for when the user forgets to provide
+any required options.</p>
+
+<p><strong>Extensibility.</strong> APIs change constantly. Updating your CLI to match a new API endpoint
+should not require touching too many files. Ideally, you would just add a single new Python module
+for a new command that also contains all its subcommands, and have everything else in the hierarchy
+fall into place.</p>
+
+<p><strong>DRYness.</strong> Subcommands may share the need for certain data that could be handled by
+their common parent instead of in each of them individually. A common case is having a
+<code class="highlighter-rouge">--verbose</code> option: instead of being parsed by every subcommand, have the root command parse
+and store this in a configuration object that is available to all subcommands.</p>
+
+<p>An additional aesthetic requirement is that the CLI mirror the hierarchical structure of the REST API,
+so users of both can switch contexts easily.</p>
+
+<p>How would one go about quickly implementing such a design? A probable first step would be
+looking at the <a href="http://docs.python-guide.org/en/latest/scenarios/cli/">Python Guide</a> for recommendations and figuring out what the most popular
+CLI framework out there is.</p>
+
+<h2 id="a-false-start">A False Start</h2>
+
+<p>If you started this way, you would come across and immediately fall for the incredibly sexy <a href="http://docopt.org/">docopt</a>.
+To see why, here is an example of parsing CLI options with docopt:</p>
+
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span class="s">"""Naval Fate.
+
+Usage:
+  naval_fate.py ship new &lt;name&gt;...
+  naval_fate.py ship &lt;name&gt; move &lt;x&gt; &lt;y&gt; [--speed=&lt;kn&gt;]
+  naval_fate.py ship shoot &lt;x&gt; &lt;y&gt;
+  naval_fate.py mine (set|remove) &lt;x&gt; &lt;y&gt; [--moored|--drifting]
+  naval_fate.py -h | --help
+  naval_fate.py --version
+
+Options:
+  -h --help     Show this screen.
+  --version     Show version.
+  --speed=&lt;kn&gt;  Speed in knots [default: 10].
+  --moored      Moored (anchored) mine.
+  --drifting    Drifting mine.
+
+"""</span>
+<span class="kn">from</span> <span class="nn">docopt</span> <span class="kn">import</span> <span class="n">docopt</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">arguments</span> <span class="o">=</span> <span class="n">docopt</span><span class="p">(</span><span class="n">__doc__</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s">'Naval Fate 2.0'</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span> </code></pre>
+</figure>
+
+<p>docopt constructs argument parsing rules from your docstring. Hence,
+you end up with well-written, up-to-date documentation for your commands,
+and your code remains minimal. To complete things, docopt comes with many
+<a href="https://github.com/docopt/docopt/tree/master/examples">examples</a>, including one partially implementing the complex <a href="https://github.com/docopt/docopt/tree/master/examples/git">git</a>
+CLI.</p>
+
+<p>However, you simply cannot implement the hierarchy I described above without
+a lot of additional effort. I personally think the provided git example is
+a joke: <code class="highlighter-rouge">git help &lt;command&gt;</code>, the first hierarchical composition of commands
+I wanted to try, <a href="https://github.com/docopt/docopt/issues/196">does not work</a>. I spent some time on this and concluded
+that it is non-trivial to try and get it to work either.</p>
+
+<p>I hated throwing away this tiny method dressed in a beautiful docstring that takes care
+of everything for you. But sometimes things just don’t work out.</p>
+
+<p>Click satisfied the aforementioned goals perfectly. It is a solid, well-designed
+library that is similar to Flask in its excellent documentation, and abundance of Python
+decorators. In short, it had what I needed:</p>
+
+<ol>
+  <li>Arbitrarily nested commands with minimal code.</li>
+  <li>Automatic help-page generation.</li>
+  <li>Prompts for required but unprovided options.</li>
+  <li>Sharing data between commands via a shared object.</li>
+</ol>
+
+<p>Let us look at some of the more interesting internals of the Igor CLI implementation.</p>
+
+<h2 id="authentication">Authentication</h2>
+
+<p>The Igor REST API uses token-based authentication: you first request an API token by providing
+your username and password, and all subsequent requests must contain this API token. The API
+token has an expiry date and is generally a better idea than sending your username and password
+with every API request.</p>
+
+<p>For credential management, the Igor CLI again follows the lead of <code class="highlighter-rouge">heroku</code>.
+Once a user successfully logs in using <code class="highlighter-rouge">igor auth login</code>,
+the username and API token are stored in <code class="highlighter-rouge">~/.netrc</code>, which is a
+standard flat-file used for credential storage. It looks like this:</p>
+
+<figure class="highlight">
+  <pre><code class="language-apacheconf" data-lang="apacheconf">machine code.heroku.com
+  login username@domain.com
+  password asd0as9d0a9s0d90as9d0a9s0d90as9d09as0d9
+machine api.heroku.com
+  login username@domain.com
+  password asd0as9d0a9s0d90as9d0a9s0d90as9d09as0d9</code></pre>
+</figure>
+
+<p>The <a href="https://docs.python.org/2/library/netrc.html">netrc</a> Python module helps you read the <code class="highlighter-rouge">~/.netrc</code> file into a Python dictionary, but
+unlike the eponymous Ruby <a href="https://rubygems.org/gems/netrc">gem</a>, it does not provide a way to save dictionaries back to
+well-formatted <code class="highlighter-rouge">~/.netrc</code> files. I had to write some <a href="https://github.com/emaadmanzoor/igor-cli/blob/master/cli/netrc_utils.py">helper methods</a> to do this.</p>
+
+<p>Why store credentials in this file? Being a pretty standard storage
+location, many other tools use this as the default source of credentials, like FTP and,
+importantly for us, the Python <a href="https://python-requests.org">requests</a> module that eases working with HTTP in Python.
+It automatically picks up credentials from <code class="highlighter-rouge">~/.netrc</code> and provides
+them to the correct host. Hence, by having these credentials stored in <code class="highlighter-rouge">~/.netrc</code>,
+we could avoid additional code anywhere else that retrieves and sends them across with
+HTTP requests.</p>
+
+<p>A natural question now would be: what about validation? What if the requests module does not
+find any stored credentials? What happens if the user does something strange; for
+example, setting a machine’s power state to <code class="highlighter-rouge">monkey</code> instead of the valid <code class="highlighter-rouge">on|off|reset|cycle</code>
+options?</p>
+
+<h2 id="handling-errors">Handling Errors</h2>
+
+<p>The Igor CLI is a thin layer over the Igor REST API, which is a thin layer over <code class="highlighter-rouge">ipmitool</code>. This
+appears really fragile; if each layer performs its own argument parsing and validation, doing
+something like adding new argument parameters would require changing each layer.</p>
+
+<p>The strategy I adopted is to aggressively delegate error handling, and enforce some invariants.
+The Igor CLI uses a single <code class="highlighter-rouge">make_api_request</code> method defined <a href="https://github.com/emaadmanzoor/igor-cli/blob/master/cli/request_utils.py">here</a>. If the user is not logged
+in or is not authorized to access a machine, the function fails with a pointer to <code class="highlighter-rouge">igor auth</code> or
+<code class="highlighter-rouge">igor permissions</code>. For any other API response apart from HTTP 200 OK, the method bails out
+immediately, printing the API response. So the CLI subcommands themselves are simply messengers,
+performing no validation themselves.</p>
+
+<p>As an example, consider the <code class="highlighter-rouge">ipmitool power</code> command that takes exactly one of <code class="highlighter-rouge">on|off|reset|cycle</code>
+as a <code class="highlighter-rouge">state</code> parameter. The Igor CLI takes the <code class="highlighter-rouge">--state</code> argument and sends it to the Igor
+REST API. The REST API in turn passes it on to <code class="highlighter-rouge">ipmitool</code> via the <a href="https://pypi.python.org/pypi/pyipmi">pyipmi</a> module, which raises
+an <code class="highlighter-rouge">IpmiError</code> if there is anything wrong. If such an exception occurs, the API returns
+a message (with a HTTP 400 error), which is then displayed by the CLI’s <code class="highlighter-rouge">make_api_request</code> function.</p>
+
+<p>With this strategy, if <code class="highlighter-rouge">ipmitool</code> begins accepting a new <code class="highlighter-rouge">monkey</code> power state, we would not need any
+code changes at all!</p>
+
+<h2 id="future">Future</h2>
+
+<p>The Igor CLI is easily installable using <a href="https://pypi.python.org/pypi/pip">pip</a>:</p>
+
+<figure class="highlight">
+  <pre><code class="language-bash" data-lang="bash">pip install git+https://github.com/emaadmanzoor/igor-cli.git</code></pre>
+</figure>
+
+<p>It currently allows one to add, remove, view and update users, machines and user-machine
+permission pairs. It also allows one to view and set a machine’s power state. The remaining IPMI
+operations are work in progress. A particularly interesting one is interacting with the serial-on-LAN
+console; would it make sense to create some sort of persistent duplex HTTP connection? Also coming
+up are the ncurses, web and Android clients. Further details are available in
+my <a href="http://www.google-melange.com/gsoc/proposal/public/google/gsoc2014/emaadmanzoor/5724160613416960">project proposal and timeline</a>.</p>
+
+<p>There will soon be a post describing the Igor REST API too. You can stay updated with new
+developments by watching or starring the <a href="https://github.com/emaadmanzoor/igor-cli">Igor CLI</a> and <a href="https://github.com/emaadmanzoor/igor-rest-api">Igor REST API</a> projects on Github.</p>
+
+<h2 id="appendix">Appendix</h2>
+
+<p>This appendix provides termshows demonstrating some of the less interesting command groups that
+were not discussed in the post above. All commands were executed as Igor user <code class="highlighter-rouge">root</code>.</p>
+
+<p>The Igor REST API server was running locally. Instead of passing the <code class="highlighter-rouge">--igor-server</code>
+option with every command, the following is placed in <code class="highlighter-rouge">~/.igorrc</code>:</p>
+
+<figure class="highlight">
+  <pre><code class="language-apacheconf" data-lang="apacheconf">[igor]
+igor_server = localhost:5000</code></pre>
+</figure>
+
+<h3 id="authentication-operations">Authentication Operations</h3>
+
+<p><em>See <a href="https://github.com/emaadmanzoor/igor-cli/pull/2">pull request</a>.</em></p>
+
+<div class="frame">
+  <iframe src="http://showterm.io/a6c94469d81690371b084" scrolling="no" frameborder="0"></iframe>
+</div>
+
+<h3 id="machine-management-operations">Machine Management Operations</h3>
+
+<p><em>See <a href="https://github.com/emaadmanzoor/igor-cli/pull/3">pull request</a>.</em></p>
+
+<div class="frame">
+  <iframe src="http://showterm.io/44b89c6eab991b6f24dc3" scrolling="no" frameborder="0"></iframe>
+</div>
+
+<h3 id="user-management-operations">User Management Operations</h3>
+
+<p><em>See <a href="https://github.com/emaadmanzoor/igor-cli/pull/4">pull request</a>.</em></p>
+
+<div class="frame">
+  <iframe src="http://showterm.io/c15a606f80486ae4af2a0" scrolling="no" frameborder="0"></iframe>
+</div>
+
+<h3 id="permission-management--power-state-operations">Permission Management &amp; Power State Operations</h3>
+
+<p>Permission management: <em>See <a href="https://github.com/emaadmanzoor/igor-cli/pull/5">pull request</a>.</em></p>
+
+<p>IPMI power state: <em>See <a href="https://github.com/emaadmanzoor/igor-cli/pull/6">pull request</a>.</em></p>
+
+<div class="frame">
+  <iframe src="http://showterm.io/7b469f028bbe3821467af" scrolling="no" frameborder="0"></iframe>
+</div>
+
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

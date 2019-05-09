@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8>
+        <meta name=viewport content="width=device-width, initial-scale=1.0">
+        <meta name=description content="Blog of Emaad Ahmed Manzoor">
+        
+        <title>
+          
+            Getting Android Sources Behind A Restrictive Proxy | 
+          
+          Emaad Ahmed Manzoor
+        </title>
+
+        <script src=http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML.js type=text/javascript></script>
+        <script>
+            MathJax.Hub.Config({
+              "HTML-CSS": {
+                linebreaks: {
+                    automatic: true,
+                    width: "70% container"
+                },
+                styles: {
+                    ".MathJax .math": {
+                        //"border": "1px solid #ccc",
+                        //"margin": "0.1em 0",
+                        //"padding": "0.3em",
+                        //"vertical-align": "middle"
+                    },
+                    ".MathJax_Display .math": {
+                        "border": "none",
+                        "padding": "0",
+                    }
+                },
+                scale: 100
+              }
+            });
+        </script>
+                
+        <link rel=stylesheet type=text/css href=/css/pure-min.css>
+        <link rel=stylesheet type=text/css href=/css/github.css>
+        <link rel=stylesheet type=text/css href=/css/styles.css>
+        <link rel=stylesheet type=text/css href=/css/font-awesome/css/font-awesome.min.css>
+        
+        <link rel=alternate type=application/rss+xml title="RSS feed for eyeshalfclosed.com" href="/feed.xml">
+    </head>
+    <body>
+        <div class="container pure-g-r">
+            <div class=pure-u-1-4>
+                <div class=author-info>
+    <img src="/images/author-image.jpeg" class=author-image />
+    <h1 class=author-name><a href=/>Emaad Ahmed Manzoor</a></h1>
+    <div class=nav>
+        <a href="https://github.com/emaadmanzoor"><i class=icon-github-alt></i></a>
+        <a href="https://twitter.com/emaadmanzoor"><i class=icon-twitter></i></a>
+        <a href="https://linkedin.com/in/emaadmanzoor"><i class=icon-linkedin></a></i>
+        <a href="http://feeds.feedburner.com/eyeshalfclosed"><i class=icon-rss></i></a>
+    </div>
+    <div class=home-nav>
+        <ul>
+            <li><a href="https://scholar.google.com/citations?user=TcMyxM0AAAAJ">Scholar</a></li>
+            <li><a href="/blog/">Blog</a>
+                &nbsp;|&nbsp;
+                <a href="/jrnl/">jrnl</a></li>
+            <li><a href="/projects/">Projects</a>
+                &nbsp;|&nbsp;
+                <a href="https://github.com/emaadmanzoor">Code</a>
+            </li>
+            <li><a href="/talks/">Talks</a></li>
+            <li><a href="/service/">Service</a></li>
+            <li><a href="/teaching/">Teaching</a></li>
+            <li>
+                <a class=resume-link href="/cv.pdf">CV</a><br/>
+                <span class=resume-update>(Updated Mar. '19)</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+            </div>
+            <div class=pure-u-3-4>
+                <div class=right-column>
+                    <div class=post>
+    
+    <ul class=post-meta>
+    
+    <li class=publish-time><i class=icon-calendar></i>February 07, 2011</li>
+    
+        <li>&middot;</li>
+        <li><a href="/tags/#android-ref">#android</a></li>
+    
+</ul>
+
+    <h1 class=title-large>Getting Android Sources Behind A Restrictive Proxy</h1>
+    <div class=content>
+        <p>I’ll have to assume you’re suffocated by both the following bottlenecks in getting the Android
+Open Source Project code:</p>
+
+<ul>
+  <li>Blocked <code class="highlighter-rouge">git://</code> protocol and port.</li>
+  <li>A limit on the amount you’re allowed to download.</li>
+</ul>
+
+<p>The Android sources amount to around 6GB in total, so anonymous proxy programs like
+<a href="http://www.your-freedom.net/">Your-Freedom</a> will choke after a fixed time limit;
+and <code class="highlighter-rouge">repo sync</code> (git) does not resume downloads between projects; though you may resume
+from the last project you downloaded. To smoothen out the rough edges, do this:</p>
+
+<ul>
+  <li>Set your git proxy using this command, replacing what’s necessary:
+<code class="highlighter-rouge">git config --global http.proxy 10.1.8.30:8080</code></li>
+  <li>Follow the steps <a href="http://source.android.com/source/download.html">here</a> until you reach
+<em>Getting The Files</em>: this is the part that won’t work behind a restrictive proxy.</li>
+  <li>Switch to the directory where you initially ran <code class="highlighter-rouge">repo init -u</code> on the command line and
+then type in <code class="highlighter-rouge">ls -a</code>; you should be able to see a <code class="highlighter-rouge">.repo</code> folder. If you don’t, it means
+your <code class="highlighter-rouge">repo init -u</code> failed for some reason.</li>
+  <li>Type in <code class="highlighter-rouge">gedit .repo/manifest.xml</code> and change line 4 to read:
+<code class="highlighter-rouge">fetch="https://android.git.kernel.org/</code></li>
+  <li>Type in <code class="highlighter-rouge">gedit .repo/repo/repo</code> and change line 5 to read:
+<code class="highlighter-rouge">REPO_URL='http://android.git.kernel.org/tools/repo.git'</code></li>
+  <li>Download the modified repo script
+<a href="https://docs.google.com/leaf?id=0B76d_EyUt5JwNDU5NzFiNzMtYWQ1NC00ZmNlLThiNjQtY2M1NTM3MDQzMzBi&amp;hl=en">here</a>
+and replace your old repo script with the modified one.</li>
+  <li>Continue with <em>Getting The Files</em> at the
+<a href="http://source.android.com/source/download.html">Android Open Source Project website</a>
+and things should be working fine.</li>
+</ul>
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
