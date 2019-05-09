@@ -1,17 +1,15 @@
-name: Emaad Ahmed Manzoor
-description: Blog of Emaad Ahmed Manzoor
+name: Alex Wapniarski
+description: Blog of Alex Wapniarski
 url: "http://www.eyeshalfclosed.com"
 
 # Author info
-author_name: Emaad Ahmed Manzoor
+author_name: Alex Wapniarski
 author_image_path: /images/author-image.jpeg
 
 # External services
-github_url: "https://github.com/emaadmanzoor"
-twitter_url: "https://twitter.com/emaadmanzoor"
-linkedin_url: "https://linkedin.com/in/emaadmanzoor"
-feed_url: "http://feeds.feedburner.com/eyeshalfclosed"
-email: "emaadmanzoor@gmail.com"
+github_url: "https://github.com/alex-wap"
+linkedin_url: "https://linkedin.com/in/wapniarski"
+email: "wapniarski@gmail.com"
 
 # Markdown rendering
 kramdown:
@@ -23,4 +21,7 @@ permalink: /blog/:year/:month/:day/:title/
 
 # important since the site is compiled
 # on Github's servers
-timezone: America/New_York
+timezone: America/San_Francisco
+
+# important since the site is compiled
+include: [_redirects]
