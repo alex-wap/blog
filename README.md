@@ -11,4 +11,7 @@ Built with [Jekyll](https://jekyllrb.com/). Continuous deployment and hosting on
 ### Todo
 - check cname functionality
 - edit for content
-- 
+- resume
+- now page
+- about page
+
