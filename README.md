@@ -9,4 +9,6 @@ under construction
 Built with [Jekyll](https://jekyllrb.com/). Continuous deployment and hosting on [Netlify](https://www.netlify.com/). Original design by [Emaad Ahmed Manzoor](https://github.com/emaadmanzoor/blog).
 
 ### Todo
-
+- check cname functionality
+- edit for content
+- 
