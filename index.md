@@ -15,9 +15,3 @@ Insert qualifications
 Insert career path
 
 Insert hobbies
-
-### News
-
-   * *05.15.18* -- delete section?? [GSoC '14][7]
-
-[7]: https://www.google-melange.com/gsoc/project/details/google/gsoc2014/emaadmanzoor/5693417237512192

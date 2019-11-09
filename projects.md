@@ -5,32 +5,41 @@ layout: page
 permalink: /projects/
 ---
 
-#### Research
+#### Hobby Projects
 
-   * [Predicting Purchase Behaviour from Financial Sensor Logs](#).<br/>
-     With [Leman Akoglu](http://www3.cs.stonybrook.edu/~leman/).<br/>
-     Aug 2016 - Now.
-   
-   * [Mining Anomalous Graphs from Edge Streams](http://www3.cs.stonybrook.edu/~emanzoor/streamspot).<br/>
-     With [Leman Akoglu](http://www3.cs.stonybrook.edu/~leman/).<br/>
-     Aug 2015 - Aug 2016.
+- wedding
+- 3d printing
+- laser cutter
+- sticker printer
 
-   * [Scheduling Broadcasts in a Network of Timelines](/scheduling/).<br/>
-     With [Haewoon Kwak](http://haewoon.io/) and [Panos Kalnis](http://www.panoskalnis.com/).<br/>
-     Jan 2014 - May 2015.
+#### Personal Software Projects
 
-   * [An NLP Approach for Detecting Android Malware](/malware/).<br/>
-     With [Xiangliang Zhang](https://www.lri.fr/~xlzhang/).<br/>
-     Aug - Dec, 2013.
+**Typing Dojo** - [http://typing-dojo.alexw.tech/](http://typing-dojo.alexw.tech/)                                                                   - 2016
+
+- Typing Dojo is a typing game that lets users race against other users in real time using web sockets. Typing Dojo is a solo project that demonstrates the full MEAN stack.
+- Technologies used: JavaScript, MongoDB, Express.js, AngularJS, Node.js, Socket.IO, jQuery, Materialize, AWS EC2, Git, HTML, CSS.
+
+**Crime Dodger** - [http://crime-dodger.alexw.tech/](http://crime-dodger.alexw.tech/) - 2016
+
+- Lead developer on a team project that utilized Data.gov information and Google Maps API to map crime throughout the city of San Francisco and generate directions.
+- Primarily responsible for delegating tasks, version control, deployment, Socrata Open Data, Google Maps JavaScript API.
+- Technologies used: JavaScript, Python, MySQL, jQuery, HTML, CSS, Bootstrap, MVC, AWS EC2, Git, Socrata Open Data, and Google Maps JavaScript API.
+
+**User Dashboard** - [http://user-dashboard.alexw.tech/](http://user-dashboard.alexw.tech/) - 2016
+
+- Solely created an application that demonstrates an MVC Framework, login with registration, validation, Bootstrap, and a relational database.
+- Technologies used: Python, MySQL, Flask, Pylot (MVC Python Framework), Bootstrap, AWS EC2, Git, HTML, CSS
+
+**Snippet** - [https://github.com/alex-wap/snippet](https://github.com/alex-wap/snippet) - 2016
+
+- Snippet is an iOS application that allows the user to write and store code snippets. It is a text editor with a built-in chat feature to share your code with others around the web. It uses a custom keyboard and web sockets. Snippet is a team project.
+- Primarily responsible for implementation of web sockets in iOS, implementation of Node.js server for web chat, version control, and auto layout.
+- Technologies used: Swift, JavaScript, Express.js, Node.js, Socket.IO, Xcode 7.3.1.
+- iOS Concepts: Storyboard, Auto Layout, Table View, Custom Cell, Core Data (Data Persistence), Tab View Controller, Navigation Controller, Protocols, Delegates, CocoaPods.
 
 #### Professional
 
    * [QED](http://qed.ai), Summer 2015.
-   * [Igor][1] ([REST API](/blog/2014/08/28/building-the-igor-rest-api/) and [CLI](http://localhost:4000/blog/2014/06/26/building-the-igor-cli-with-click/)). 
-     [Oregon State University][2], Summer 2014.
-   * [Timesense](/yahoo/). Yahoo!, 2012 - 2013 & Fall 2011. 
-   * [Comicreel](/tachyon/). [Tachyon Technologies][3], Summer 2012.
-   * [MVHub](http://thecsl.org/go/fake-blog/packaged_divorce.shtml). [UMass Lowell][4], Summer 2011.
 
 #### Course
 

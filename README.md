@@ -6,7 +6,9 @@ under construction
 
 ## Powered By
 
-Built with [Jekyll](https://jekyllrb.com/). Continuous deployment and hosting on [Netlify](https://www.netlify.com/). Original design by [Emaad Ahmed Manzoor](https://github.com/emaadmanzoor/blog).
+- Built with [Jekyll](https://jekyllrb.com/). Run locally with `jekyll serve`.
+- Continuous deployment and hosting on [Netlify](https://www.netlify.com/). 
+- Original design by [Emaad Ahmed Manzoor](https://github.com/emaadmanzoor/blog).
 
 ### Todo
 - check cname functionality
@@ -14,4 +16,5 @@ Built with [Jekyll](https://jekyllrb.com/). Continuous deployment and hosting on
 - resume
 - now page
 - about page
+- favicon
 
