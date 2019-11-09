@@ -6,12 +6,9 @@ title: Home
 ---
 
 {: style="margin-top:0; margin-bottom: 0;"}
-Under Construction
 
-Insert Elevator pitch
+Hi, I am a maker, musician, gamer, husband, photographer, redditor, and software developer.
 
-Insert qualifications
+I'm a Bay Area native and I went to Cal. Go Bears!
 
-Insert career path
-
-Insert hobbies
+Learn about what I am doing on my [now page](/now) or my [blog](/blog).

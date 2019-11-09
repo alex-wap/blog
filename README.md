@@ -13,8 +13,8 @@ under construction
 ### Todo
 - check cname functionality
 - edit for content
-- resume
+- resume very out of date
 - now page
 - about page
-- favicon
-
+- spell check...
+- double check favicon
