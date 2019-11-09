@@ -1,18 +1,17 @@
 ---
 title: Projects
-homepage: True
 layout: page
 permalink: /projects/
 ---
 
-#### Hobby Projects
+#### Hobby
 **under construction**
 - wedding
 - 3d printing
 - laser cutter
 - sticker printer
 
-#### Personal Software Projects
+#### Free Software
 
 **Portfolio Website** - [http://alexw.tech/](http://alexw.tech/)                                                                   - 2016
 
