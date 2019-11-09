@@ -6,7 +6,7 @@ under construction
 
 ## Powered By
 
-- Built with [Jekyll](https://jekyllrb.com/). Run locally with `jekyll serve`.
+- Built with [Jekyll](https://jekyllrb.com/).
 - Continuous deployment and hosting on [Netlify](https://www.netlify.com/). 
 - Original design by [Emaad Ahmed Manzoor](https://github.com/emaadmanzoor/blog).
 
@@ -18,3 +18,7 @@ under construction
 - about page
 - spell check...
 - double check favicon
+
+### Notes
+- Run locally with `jekyll serve`. Default is `http://localhost:4000`.
+- `git push origin gh-pages` to update.
