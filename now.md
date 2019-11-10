@@ -20,6 +20,11 @@ I start my first semester in January. Learn more about the program [here](http:/
 - I will build a new computer. Pcpartpicker link coming soon.
 - Fashion. Blog posts coming soon.
 - New laser cut project coming soon.
-- Ukulele (in my office)
-- Half-Life VR on the Oculus Quest 
+- Ukulele
+- Half-Life VR on the Oculus Quest
+
+### Health
+
 - Lifting
+- hip flexor mobility 
+- neck tension (wall angels)
