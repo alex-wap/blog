@@ -13,11 +13,15 @@ under construction
 ### Todo
 - check cname functionality
 - edit for content
-- resume very out of date
+- resume very out of date (WIP)
 - now page
 - about page
 - spell check...
+- optimize images
+- decide on where to host images (in repo or cloud-based)
 - double check favicon
+- change image probably
+- bucket list?
 
 ### Notes
 - Run locally with `jekyll serve`. Default is `http://localhost:4000`.
