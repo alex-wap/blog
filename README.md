@@ -14,8 +14,9 @@ under construction
 - check cname functionality
 - edit for content
 - resume very out of date (WIP)
-- now page
-- about page
+- Move now page to homepage 
+- Add contact info
+- Change photo 
 - spell check...
 - optimize images
 - decide on where to host images (in repo or cloud-based)
