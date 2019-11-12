@@ -9,7 +9,7 @@ author_image_path: /images/author-image.jpeg
 # External services
 github_url: "https://github.com/alex-wap"
 linkedin_url: "https://linkedin.com/in/wapniarski"
-email: "wapniarski@gmail.com"
+email: "wapniarski+site@gmail.com"
 
 # Markdown rendering
 kramdown:

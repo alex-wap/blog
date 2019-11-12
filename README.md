@@ -13,8 +13,6 @@ under construction
 ### Todo
 - check cname functionality
 - edit for content
-- resume very out of date (WIP)
-- Move now page to homepage 
 - Add contact info
 - Change photo 
 - spell check...
