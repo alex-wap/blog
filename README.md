@@ -11,16 +11,15 @@ under construction
 - Original design by [Emaad Ahmed Manzoor](https://github.com/emaadmanzoor/blog).
 
 ### Todo
-- check cname functionality
-- edit for content
-- Add contact info
 - Change photo 
+- edit for content
 - spell check...
-- optimize images
+- check cname functionality
 - decide on where to host images (in repo or cloud-based)
+- optimize images
 - double check favicon
-- change image probably
 - bucket list?
+- journal?
 
 ### Notes
 - Run locally with `jekyll serve`. Default is `http://localhost:4000`.
