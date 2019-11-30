@@ -4,9 +4,11 @@ layout: page
 permalink: /about/
 ---
 
-under construction
+note: under construction
 
-random things
+## Work
+
+I work at Microsoft on Cortana. More specifically, I work on Cortana's [orchestration service](https://en.wikipedia.org/wiki/Orchestration_(computing)). Ask me about it! My previous team was Cortana [language understanding](https://en.wikipedia.org/wiki/Natural-language_understanding).
 
 ## Random things that interest me
 * food, travel, hiking, photography, [hacker news](https://news.ycombinator.com/), [reddit](http://old.reddit.com), mechanical keyboards, high fidelity audio, tiny houses, origami, board games, sci-fi, movies, live music, AR/VR

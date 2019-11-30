@@ -15,10 +15,6 @@ Check out my [blog](/blog) and learn about what I am doing below:
 
 ## Now (Updated 11/29/19)
 
-### Work
-
-I work at Microsoft on Cortana. More specifically, I work on Cortana's [orchestration service](https://en.wikipedia.org/wiki/Orchestration_(computing)). Ask me about it! My previous team was Cortana [language understanding](https://en.wikipedia.org/wiki/Natural-language_understanding).
-
 ### School - OMSCS @ Georgia Tech
 
 I start my first semester in January. Learn more about the program [here](http://www.omscs.gatech.edu/). 
