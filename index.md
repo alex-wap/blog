@@ -13,7 +13,7 @@ I'm a Bay Area native and I went to Cal. Go Bears!
 
 Check out my [blog](/blog) and learn about what I am doing below:
 
-## Now (Updated 11/11/19)
+## Now (Updated 11/29/19)
 
 ### Work
 
@@ -26,11 +26,11 @@ I start my first semester in January. Learn more about the program [here](http:/
 ### Personal
 
 - This site. I need to add content.
-- I will build a new computer. [pcpartpicker](https://pcpartpicker.com/list/L4qnQq) (WIP). Maybe a [fancy case](http://www.phanteks.com/Enthoo-Evolv-X.html)?
+- I will build a new computer. Final [part list](https://pcpartpicker.com/list/J3vGL2).
 - Fashion. Blog posts coming soon.
 - New laser cut project coming soon.
-- Ukulele
-- Half-Life VR on the Oculus Quest
+- New 3D print project (gift) coming soon.
+- Half-Life VR on the Oculus Quest (it's very fun)
 
 ### Health
 
