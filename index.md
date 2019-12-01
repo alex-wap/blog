@@ -13,7 +13,7 @@ I'm a Bay Area native and I went to Cal. Go Bears!
 
 Check out my [blog](/blog) and learn about what I am doing below:
 
-## Now (Updated 11/29/19)
+## Now (Updated 12/1/19)
 
 ### School - OMSCS @ Georgia Tech
 
@@ -22,7 +22,7 @@ I start my first semester in January. Learn more about the program [here](http:/
 ### Personal
 
 - This site. I need to add content.
-- I will build a new computer. Final [part list](https://pcpartpicker.com/list/J3vGL2).
+- I will build a new computer. Final [part list](https://pcpartpicker.com/list/qYWW4n).
 - Fashion. Blog posts coming soon.
 - New laser cut project coming soon.
 - New 3D print project (gift) coming soon.
