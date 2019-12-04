@@ -19,6 +19,7 @@ under construction
 - change favicon
 - bucket list?
 - journal?
+- convert work notes into blog posts?
 
 ### Notes
 - Run locally with `jekyll serve`. Default is `http://localhost:4000`.
