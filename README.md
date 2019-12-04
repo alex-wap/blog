@@ -14,10 +14,9 @@ under construction
 - Change photo 
 - edit for content
 - spell check...
-- check cname functionality
 - decide on where to host images (in repo or cloud-based)
 - optimize images
-- double check favicon
+- change favicon
 - bucket list?
 - journal?
 

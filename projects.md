@@ -10,18 +10,20 @@ permalink: /projects/
 - 3d printing
 - laser cutter
 - sticker printer
+- videogrpahy
+- photography
 
 #### Free Software
 
-**Portfolio Website** - [http://alexw.tech/](http://alexw.tech/)                                                                   - 2016
+**Portfolio Website** - [http://alexw.tech/](http://alexw.tech/) - 2016
 
 - My old portfolio site I used to break into the software industry. [GitHub](https://github.com/alex-wap/portfolio)
 
-**Old Blog** - [https://alex-wap.github.io](https://alex-wap.github.io)                                                                   - 2017
+**Old Blog** - [https://alex-wap.github.io](https://alex-wap.github.io) - 2017
 
 - My old blog I used to document my experience as a software apprentice. [GitHub](https://github.com/alex-wap/alex-wap.github.io)
 
-**Typing Dojo** - [http://typing-dojo.alexw.tech/](http://typing-dojo.alexw.tech/)                                                                   - 2016
+**Typing Dojo** - [http://typing-dojo.alexw.tech/](http://typing-dojo.alexw.tech/) - 2016
 
 - Typing Dojo is a typing game that lets users race against other users in real time using web sockets. Typing Dojo is a solo project that demonstrates the full MEAN stack.
 - Technologies used: JavaScript, MongoDB, Express.js, AngularJS, Node.js, Socket.IO, jQuery, Materialize, AWS EC2, Git, HTML, CSS.
